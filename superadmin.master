@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="morya.master.cs" Inherits="morya" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="superadmin.master.cs" Inherits="morya" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc" %>
 <!DOCTYPE html>
 
