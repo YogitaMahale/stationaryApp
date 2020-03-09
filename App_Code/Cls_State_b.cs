@@ -148,38 +148,42 @@ public class Cls_State_b
     #endregion
 
 }
-public class citymaster
-{
-    public citymaster()
-    { }
- 
-    #region Private Variables
-    private Int64 _id;
-    private Int64  _stateid;
-    private String _cityname;
 
 
-    #endregion
 
 
-    #region Public Properties
-    public Int64 id
+    public class statemaster
     {
-        get { return _id; }
-        set { _id = value; }
+        public statemaster()
+        { }
+
+        #region Private Variables
+        private Int64 _id;
+        private Int64 _countryid;
+        private String _statename;
+
+
+        #endregion
+
+
+        #region Public Properties
+        public Int64 id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+        public Int64 countryid
+        {
+            get { return _countryid; }
+            set { _countryid = value; }
+        }
+        public String statename
+        {
+            get { return _statename; }
+            set { _statename = value; }
+        }
+
+        #endregion
     }
-    public Int64  stateid
-    {
-        get { return _stateid; }
-        set { _stateid = value; }
-    }
-    public String cityname
-    {
-        get { return _cityname; }
-        set { _cityname= value; }
-    }
-    
-    #endregion
-}
 
 }
