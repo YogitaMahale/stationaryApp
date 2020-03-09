@@ -1,10 +1,11 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="superadmin.master.cs" Inherits="morya" %>
+
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    
+
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Milk</title>
@@ -45,17 +46,17 @@
     <link href="Template/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
 
 
-   <!-- iCheck for checkboxes and radio inputs -->
-  <link rel="stylesheet" href="Template/plugins/iCheck/all.css" />
-  <link href="Template/plugins/iCheck/flat/blue.css" rel="stylesheet" />
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="Template/plugins/iCheck/all.css" />
+    <link href="Template/plugins/iCheck/flat/blue.css" rel="stylesheet" />
     <!-- Bootstrap Color Picker -->
-  <link rel="stylesheet" href="Template/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" />
-  <!-- Bootstrap time Picker -->
-  <link rel="stylesheet" href="Template/plugins/timepicker/bootstrap-timepicker.min.css" />
-  <!-- Select2 -->
-  <link rel="stylesheet" href="Template/bower_components/select2/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="Template/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" />
+    <!-- Bootstrap time Picker -->
+    <link rel="stylesheet" href="Template/plugins/timepicker/bootstrap-timepicker.min.css" />
+    <!-- Select2 -->
+    <link rel="stylesheet" href="Template/bower_components/select2/dist/css/select2.min.css" />
     <link rel="shortcut icon" href="uploads/milk.jpg" />
-  
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -302,7 +303,7 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="uploads/milk.jpg" class="img-circle" alt="User Image"/>
+                                    <img src="uploads/milk.jpg" class="img-circle" alt="User Image" />
                                     <%--<img src="uploads/mgcagro.png" class="img-circle" alt="User Image"/>--%>
 
                                     <p>
@@ -352,11 +353,12 @@
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="uploads/milk.jpg" class="img-circle" alt="User Image">
+                        <img src="uploads/milk.jpg" class="img-circle" alt="User Image" />
                     </div>
                     <div class="pull-left info">
                         <%--<p>Alexander Pierce</p>--%>
-                        <p><asp:Label ID="lblLogin1" runat="server" Text="USER"></asp:Label></p>
+                        <p>
+                            <asp:Label ID="lblLogin1" runat="server" Text="USER"></asp:Label></p>
 
                         <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
                     </div>
@@ -374,8 +376,8 @@
                 </form>--%>
                 <!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
-                 <div id="cssmenu" runat="server" >
-                    </div>
+                <div id="cssmenu" runat="server">
+                </div>
                 <%--<ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="active treeview">
@@ -555,8 +557,8 @@
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                 <h1 runat="server" id="hPageTitle"></h1>    
-               <%-- <ol class="breadcrumb">
+                <h1 runat="server" id="hPageTitle"></h1>
+                <%-- <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
                     <li class="active">Dashboard</li>
                 </ol>--%>
@@ -565,9 +567,9 @@
             <!-- Main content -->
             <section class="content">
                 <form id="form1" runat="server">
-                   
+
                     <div>
-                         <cc:ToolkitScriptManager ID="scmSlc" runat="server"></cc:ToolkitScriptManager>
+                        <cc:ToolkitScriptManager ID="scmSlc" runat="server"></cc:ToolkitScriptManager>
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
                     </div>
@@ -579,10 +581,9 @@
         <footer class="main-footer">
             <div class="pull-right hidden-xs">
                 <%--<b>Version</b> 2.4.0--%>
-   
             </div>
             <strong>DEVELOPED BY <a href="https://ezacus.com/">EZACUS TECHNOLOGIES PVT LTD</a>.</strong>
- 
+
         </footer>
 
         <!-- Control Sidebar -->
@@ -712,7 +713,7 @@
                             <label class="control-sidebar-subheading">
                                 Report panel usage
              
-                                <input type="checkbox" class="pull-right" checked>
+                                <input type="checkbox" class="pull-right" />
                             </label>
 
                             <p>
@@ -726,7 +727,8 @@
                             <label class="control-sidebar-subheading">
                                 Allow mail redirect
              
-                                <input type="checkbox" class="pull-right" checked>
+                               <input type="checkbox" class="pull-right" />
+
                             </label>
 
                             <p>
@@ -740,7 +742,7 @@
                             <label class="control-sidebar-subheading">
                                 Expose author name in posts
              
-                                <input type="checkbox" class="pull-right" checked>
+                                <input type="checkbox" class="pull-right" />
                             </label>
 
                             <p>
@@ -756,7 +758,7 @@
                             <label class="control-sidebar-subheading">
                                 Show me as online
              
-                                <input type="checkbox" class="pull-right" checked>
+                                <input type="checkbox" class="pull-right" />
                             </label>
                         </div>
                         <!-- /.form-group -->
@@ -765,7 +767,7 @@
                             <label class="control-sidebar-subheading">
                                 Turn off notifications
              
-                                <input type="checkbox" class="pull-right">
+                                <input type="checkbox" class="pull-right" />
                             </label>
                         </div>
                         <!-- /.form-group -->
@@ -790,7 +792,7 @@
     </div>
     <!-- ./wrapper -->
 
-   
+
 
     <!-- jQuery 3 -->
     <%--<script src="Template/bower_components/jquery/dist/jquery.min.js"></script>--%>
@@ -799,7 +801,7 @@
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
         $.widget.bridge('uibutton', $.ui.button);
-</script>
+    </script>
     <!-- Select2 -->
     <script src="Template/bower_components/select2/dist/js/select2.full.min.js"></script>
 
@@ -832,9 +834,9 @@
     <script src="Template/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="Template/dist/js/demo.js"></script>
-     <!-- page script -->
-    
-    
+    <!-- page script -->
+
+
 </body>
 </html>
 
