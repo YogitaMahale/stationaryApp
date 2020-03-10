@@ -8,12 +8,11 @@ using BusinessLayer;
 
 namespace DatabaseLayer
 {
-    public class cls_product_db
+    public class cls_order_db
 {
         SqlConnection ConnectionString = new SqlConnection();
-
-        public cls_product_db()
-    {
+        public cls_order_db()
+        {
             string name = string.Empty;
             string conname = string.Empty;
             ConnectionStringSettingsCollection connections = ConfigurationManager.ConnectionStrings;
@@ -28,17 +27,15 @@ namespace DatabaseLayer
             ConnectionString.ConnectionString = ConfigurationManager.ConnectionStrings[conname].ConnectionString;
         }
         #region Public Methods
-
-        public DataTable SelectAll(Int64 subcategoryId)
+        public DataTable SelectAll()
         {
             DataSet ds = new DataSet();
             SqlDataAdapter da;
             try
             {
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "productmaster_SelectAll";
+                cmd.CommandText = "order_SelectAll";
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@subcategoryId", subcategoryId);
                 cmd.Connection = ConnectionString;
                 ConnectionString.Open();
                 da = new SqlDataAdapter(cmd);
@@ -55,16 +52,16 @@ namespace DatabaseLayer
             }
             return ds.Tables[0];
         }
-        public DataTable product_SelectBybrandId(Int64 brandid)
+        public DataTable orderSelectAllby_branchId(Int64 branchid)
         {
             DataSet ds = new DataSet();
             SqlDataAdapter da;
             try
             {
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "product_SelectBybrandId";
+                cmd.CommandText = "order_SelectbranchId";
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@brandid", brandid);
+                cmd.Parameters.AddWithValue("@branchid", branchid);
                 cmd.Connection = ConnectionString;
                 ConnectionString.Open();
                 da = new SqlDataAdapter(cmd);
@@ -82,18 +79,19 @@ namespace DatabaseLayer
             return ds.Tables[0];
         }
 
-        public productmaster  SelectById(Int64 id)
+       
+        public orders  SelectById(Int64 id)
         {
             SqlDataAdapter da;
             DataSet ds = new DataSet();
-            productmaster objbankmaster = new productmaster();
+            orders objorders = new orders();
             try
             {
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "productmaster_SelectById";
+                cmd.CommandText = "order_SelectId";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = ConnectionString;
-                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@oid", id);
                 ConnectionString.Open();
                 da = new SqlDataAdapter(cmd);
                 da.Fill(ds);
@@ -106,22 +104,14 @@ namespace DatabaseLayer
                         {
                             if (ds.Tables[0].Rows.Count > 0)
                             {
-                                {
-                                    objbankmaster.id = Convert.ToInt32(ds.Tables[0].Rows[0]["id"]);
-                                    objbankmaster.brandid = Convert.ToInt64(ds.Tables[0].Rows[0]["brandid"]);
-                                    objbankmaster.typeId = Convert.ToInt64(ds.Tables[0].Rows[0]["typeId"]);
-                                    objbankmaster.subcategoryId = Convert.ToInt64(ds.Tables[0].Rows[0]["subcategoryId"]);
-                                    objbankmaster.maincategoryId = Convert.ToInt64(ds.Tables[0].Rows[0]["maincategoryId"]);
-                                    objbankmaster.productname = Convert.ToString(ds.Tables[0].Rows[0]["productname"]);
-                                    objbankmaster.mainimage = Convert.ToString(ds.Tables[0].Rows[0]["mainimage"]);
-                                    objbankmaster.stock = Convert.ToInt64(ds.Tables[0].Rows[0]["stock"]);
-                                    objbankmaster.gst = Convert.ToDecimal (ds.Tables[0].Rows[0]["gst"]);
-                                    objbankmaster.moq = Convert.ToInt64(ds.Tables[0].Rows[0]["moq"]);
-                                    objbankmaster.shortdescp = Convert.ToString(ds.Tables[0].Rows[0]["shortdescp"]);
-                                    objbankmaster.longdescp = Convert.ToString(ds.Tables[0].Rows[0]["longdescp"]);
- 
 
-                                }
+                                objorders.oid = Convert.ToInt64(ds.Tables[0].Rows[0]["oid"]);
+                                objorders.branchid = Convert.ToInt64(ds.Tables[0].Rows[0]["branchid"]);
+                                objorders.typeid = Convert.ToString(ds.Tables[0].Rows[0]["typeid"]);
+                                objorders.totalamount = Convert.ToDecimal (ds.Tables[0].Rows[0]["totalamount"]);
+                                objorders.Comments = Convert.ToString(ds.Tables[0].Rows[0]["Comments"]);
+                                objorders.trackid  = Convert.ToString(ds.Tables[0].Rows[0]["trackid"]);
+                                 
                             }
                         }
                     }
@@ -136,38 +126,32 @@ namespace DatabaseLayer
             {
                 ConnectionString.Close();
             }
-            return objbankmaster;
+            return objorders;
         }
-
-        public Int64 Insert(productmaster objproductmaster)
+        public Int64 Insert(orders  objorders)
         {
             Int64 result = 0;
             try
             {
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "productmaster_Insert";
+                cmd.CommandText = "order_Insert";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = ConnectionString;
 
                 SqlParameter param = new SqlParameter();
-                param.ParameterName = "@id";
-                param.Value = objproductmaster.id;
-                param.SqlDbType = SqlDbType.Int;
+                param.ParameterName = "@oid";
+                param.Value = objorders.oid ;
+                param.SqlDbType = SqlDbType.BigInt;
                 param.Direction = ParameterDirection.InputOutput;
                 cmd.Parameters.Add(param);
-                cmd.Parameters.AddWithValue("@brandid", objproductmaster.brandid);
-                cmd.Parameters.AddWithValue("@productname", objproductmaster.productname);
-                cmd.Parameters.AddWithValue("@mainimage", objproductmaster.mainimage);
-                cmd.Parameters.AddWithValue("@stock", objproductmaster.stock );
-                cmd.Parameters.AddWithValue("@gst", objproductmaster.gst);
-                cmd.Parameters.AddWithValue("@moq", objproductmaster.moq );
-                cmd.Parameters.AddWithValue("@shortdescp", objproductmaster.shortdescp );
-                cmd.Parameters.AddWithValue("@longdescp", objproductmaster.longdescp );
- 
-
+                cmd.Parameters.AddWithValue("@branchid", objorders.branchid );
+                cmd.Parameters.AddWithValue("@typeid", objorders.typeid );
+                cmd.Parameters.AddWithValue("@totalamount", objorders.totalamount );
                 ConnectionString.Open();
                 cmd.ExecuteNonQuery();
                 result = Convert.ToInt64(param.Value);
+
+
             }
             catch (Exception ex)
             {
@@ -180,35 +164,32 @@ namespace DatabaseLayer
             }
             return result;
         }
-
-        public Int64 Update(productmaster objproductmaster)
-
+        public Int64 Update(orders objorders)
         {
             Int64 result = 0;
             try
             {
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "productmaster_Update";
+                cmd.CommandText = "order_update";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = ConnectionString;
+
                 SqlParameter param = new SqlParameter();
-                param.ParameterName = "@id";
-                param.Value = objproductmaster.id;
-                param.SqlDbType = SqlDbType.Int;
+                param.ParameterName = "@oid";
+                param.Value = objorders.oid;
+                param.SqlDbType = SqlDbType.BigInt;
                 param.Direction = ParameterDirection.InputOutput;
                 cmd.Parameters.Add(param);
-                cmd.Parameters.AddWithValue("@brandid", objproductmaster.brandid);
-                cmd.Parameters.AddWithValue("@productname", objproductmaster.productname);
-                cmd.Parameters.AddWithValue("@mainimage", objproductmaster.mainimage);
-                cmd.Parameters.AddWithValue("@stock", objproductmaster.stock);
-                cmd.Parameters.AddWithValue("@gst", objproductmaster.gst);
-                cmd.Parameters.AddWithValue("@moq", objproductmaster.moq);
-                cmd.Parameters.AddWithValue("@shortdescp", objproductmaster.shortdescp);
-                cmd.Parameters.AddWithValue("@longdescp", objproductmaster.longdescp);
-
+                cmd.Parameters.AddWithValue("@branchid", objorders.branchid);
+                cmd.Parameters.AddWithValue("@typeid", objorders.typeid);
+                cmd.Parameters.AddWithValue("@totalamount", objorders.totalamount);
                 ConnectionString.Open();
                 cmd.ExecuteNonQuery();
                 result = Convert.ToInt64(param.Value);
+
+
+
+
             }
             catch (Exception ex)
             {
@@ -221,17 +202,15 @@ namespace DatabaseLayer
             }
             return result;
         }
-
         public bool Delete(Int64 id)
         {
             try
             {
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "productmaster_Delete";
+                cmd.CommandText = "order_Delete";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = ConnectionString;
-
-                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@oid", id);
 
                 ConnectionString.Open();
                 cmd.ExecuteNonQuery();
@@ -248,34 +227,8 @@ namespace DatabaseLayer
             return true;
         }
 
-        public bool IsActive(Int64 id, bool isactive)
-        {
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "productmaster_IsActive";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = ConnectionString;
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.Parameters.AddWithValue("@isactive", isactive);
-
-                ConnectionString.Open();
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                ErrHandler.writeError(ex.Message, ex.StackTrace);
-                return false;
-            }
-            finally
-            {
-                ConnectionString.Close();
-            }
-            return true;
-        }
 
         #endregion
-
 
     }
 

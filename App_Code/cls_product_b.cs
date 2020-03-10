@@ -32,7 +32,21 @@ namespace BusinessLayer
                 return dt;
             }
         }
-
+        public DataTable product_SelectBybrandId(Int64 brandid)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                cls_product_db objcls_product_db = new cls_product_db();
+                dt = objcls_product_db.product_SelectBybrandId(brandid);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                ErrHandler.writeError(ex.Message, ex.StackTrace);
+                return dt;
+            }
+        }
 
 
         public productmaster  SelectById(Int64 bankid)

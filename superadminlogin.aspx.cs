@@ -68,7 +68,7 @@ public partial class superadminlogin : System.Web.UI.Page
                         Session["nameuser"] = Convert.ToString(dtUser.Rows[0]["name"]);
                         Session["usermail"] = Convert.ToString(dtUser.Rows[0]["email"]);
                         //Response.Redirect(Page.ResolveUrl("~/dashboard.aspx"));
-                        Response.Redirect("superdashboard..aspx", false);
+                        Response.Redirect("superdashboard.aspx", false);
                     }
                     else
                     {

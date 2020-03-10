@@ -60,21 +60,28 @@
                     <%--<input type="password" class="form-control" placeholder="Password">--%>
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
+                <div class="form-group has-feedback">
+
+                    <asp:DropDownList ID="ddlbranchbank" Class="form-control" runat="server">
+                        <asp:ListItem Selected="True" Value="0" Text="--Select Bank or Branch--"></asp:ListItem>
+                        <asp:ListItem Text="Bank" Value="bank"></asp:ListItem>
+                        <asp:ListItem Text="Branch" Value="branch"></asp:ListItem>
+                    </asp:DropDownList>
+
+                </div>
+
                 <div class="row">
-                   <%-- <div class="col-xs-8">
-                        <div class="checkbox icheck">
-                            <label>
-                                <input type="checkbox">
-                                Remember Me
-           
-                            </label>
-                        </div>
-                    </div>--%>
-                    <!-- /.col -->
-                    <div class="col-xs-12">
+
+                    <div class="col-xs-6" style="text-align:right;">
                         <asp:Button ID="btnLogin" runat="server" class="btn btn-primary btn-block btn-flat" ValidationGroup="l1" Text="Login" OnClick="btnLogin_Click" />
+                       
                         <%--<button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>--%>
                     </div>
+                     <div class="col-xs-6" style="text-align:left;">
+                          <asp:Button ID="bntRegistration" runat="server" class="btn btn-primary btn-block btn-flat" ValidationGroup="l1" Text="Create an Account"  />
+                       </div>
+                     
+
                     <!-- /.col -->
                 </div>
             </form>
@@ -110,6 +117,6 @@
                 increaseArea: '20%' /* optional */
             });
         });
-</script>
+    </script>
 </body>
 </html>

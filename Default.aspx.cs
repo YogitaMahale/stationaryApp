@@ -26,12 +26,14 @@ public partial class _Default : System.Web.UI.Page
     {
         txtUserName.Text = string.Empty;
         txtPassword.Text = string.Empty;
+        ddlbranchbank.SelectedIndex = 0;
     }
 
     private void AllSessionNull()
     {
         Session["userid"] = null;
-        Session["usertype"] = null;
+        Session["type"] = null;
+        Session["bid"] = null;
 
     }
 
@@ -42,34 +44,86 @@ public partial class _Default : System.Web.UI.Page
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnstring"].ConnectionString);
         try
         {
+            con.Close();
             string query = string.Empty;
             if (txtUserName.Text != string.Empty && txtPassword.Text != string.Empty)
             {
-                query = "select * from AdminLogin where isdelete=0 and lower(username)=lower('" + txtUserName.Text.Trim() + "') and password='" + txtPassword.Text.Trim() + "'";
-                SqlCommand cmd = new SqlCommand(query);
-                SqlDataAdapter sda = new SqlDataAdapter();
-                DataTable dtUser = new DataTable();
-                con.Open();
-                cmd.Connection = con;
-                sda.SelectCommand = cmd;
-                sda.Fill(dtUser);
-                if (dtUser != null)
+
+                if (ddlbranchbank.SelectedValue == "bank")
                 {
-                    if (dtUser.Rows.Count > 0)
+                    query = "select * from zonemaster where  lower(loginname)=lower('" + txtUserName.Text.Trim() + "') and password='" + txtPassword.Text.Trim() + "' and isdeleted=0";
+                    SqlCommand cmd = new SqlCommand(query);
+                    SqlDataAdapter sda = new SqlDataAdapter();
+                    DataTable dtUser = new DataTable();
+                    con.Open();
+                    cmd.Connection = con;
+                    sda.SelectCommand = cmd;
+                    sda.Fill(dtUser);
+                    if (dtUser != null)
                     {
-                        
-                        //Cls_userregistration_b obj = new Cls_userregistration_b();
-                        //Int64 Result = obj.WebsiteUser_Status(txtUserName.Text, txtPassword.Text, true);
+                        if (dtUser.Rows.Count > 0)
+                        {
+
+                            bool Status = Convert.ToBoolean(dtUser.Rows[0]["isactive"]);
+                            if (Status)
+                            {
+                                Session.Timeout = 120;
+
+                                Session["userid"] = dtUser.Rows[0]["id"].ToString();
+                                Session["username"] = dtUser.Rows[0]["name"].ToString();
+                                Session["type"] = ddlbranchbank.SelectedValue;
+                                Session["bid"] = dtUser.Rows[0]["bankid"].ToString();
+                                con.Close();
+                                Response.Redirect(Page.ResolveUrl("~/bankdashboard.aspx"));
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "", "alert('Your Account Under Admin Observation.Please wait for admin confirmation')", true);
+                            }
 
 
-                        Session.Timeout = 120;
-                        Session["userid"] = Convert.ToString(dtUser.Rows[0]["adminid"]);
-                        Session["usertype"] = Convert.ToString(dtUser.Rows[0]["usertype"]);
-                      //  Session["usertype"] = "user";
-                        Session["nameuser"] = Convert.ToString(dtUser.Rows[0]["name"]);
-                        Session["usermail"] = Convert.ToString(dtUser.Rows[0]["email"]);
-                        //Response.Redirect(Page.ResolveUrl("~/dashboard.aspx"));
-                        Response.Redirect("superdashboard.aspx", false );
+                        }
+                    }
+
+                }
+                else
+                {
+                    query = "select * from branchmaster where  lower(loginname)=lower('" + txtUserName.Text.Trim() + "') and password='" + txtPassword.Text.Trim() + "' and isdeleted=0";
+                    SqlCommand cmd = new SqlCommand(query);
+                    SqlDataAdapter sda = new SqlDataAdapter();
+                    DataTable dtUser = new DataTable();
+                    con.Open();
+                    cmd.Connection = con;
+                    sda.SelectCommand = cmd;
+                    sda.Fill(dtUser);
+                    if (dtUser != null)
+                    {
+                        if (dtUser.Rows.Count > 0)
+                        {
+                            bool Status = Convert.ToBoolean(dtUser.Rows[0]["isactive"]);
+                            if (Status)
+                            {
+                                Session.Timeout = 120;
+
+                                Session["userid"] = Convert.ToString(dtUser.Rows[0]["branchid"]);
+                                Session["username"] = dtUser.Rows[0]["name"].ToString();
+                                Session["type"] = ddlbranchbank.SelectedValue;
+                                Session["bid"] = dtUser.Rows[0]["branchid"].ToString();
+
+                                con.Close();
+                                Response.Redirect(Page.ResolveUrl("~/branchdashboard.aspx"));
+                            }
+                            else
+                            {
+                                bMsg.InnerText = "Your account under admin observation";
+                            }
+
+                        }
+                        else
+                        {
+                            bMsg.InnerText = "Please enter correct user name & password !!!";
+                            Clear();
+                        }
                     }
                     else
                     {
@@ -77,11 +131,7 @@ public partial class _Default : System.Web.UI.Page
                         Clear();
                     }
                 }
-                else
-                {
-                    bMsg.InnerText = "Please enter correct user name & password !!!";
-                    Clear();
-                }
+
             }
             else
             {

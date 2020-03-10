@@ -165,10 +165,13 @@ public partial class manageproduct : System.Web.UI.Page
     {
         Int64 maincategoryId = Convert.ToInt64(ddlmaincategory.SelectedValue.ToString());
         Bindsubcategory();
+        //btnShow_Click(null, null);
     }
 
     protected void ddlsubcategory_SelectedIndexChanged(object sender, EventArgs e)
     {
+        btnShow_Click(null, null);
+        // btnShow_Click(null, null);
         //Int64 subcategoryId = Convert.ToInt64(ddlsubcategory.SelectedValue.ToString());
         //bindType(subcategoryId);
     }
