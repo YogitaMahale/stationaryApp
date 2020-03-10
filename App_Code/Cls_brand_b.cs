@@ -133,6 +133,8 @@ namespace BusinessLayer
         private String _typename;
         private String _subcategoryname;
         private String _maincategoryname;
+        private bool _isactive;
+        private bool _isdeleted;
 
         #endregion
 
@@ -239,6 +241,32 @@ namespace BusinessLayer
             set
             {
                 _maincategoryname = value;
+            }
+        }
+
+        public bool Isactive
+        {
+            get
+            {
+                return _isactive;
+            }
+
+            set
+            {
+                _isactive = value;
+            }
+        }
+
+        public bool Isdeleted
+        {
+            get
+            {
+                return _isdeleted;
+            }
+
+            set
+            {
+                _isdeleted = value;
             }
         }
         #endregion

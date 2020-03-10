@@ -99,6 +99,8 @@
                                                 <td style="text-align: center">
                                                     <asp:HyperLink ID="hlEdit" runat="server" Style="text-decoration: underline" class="btn btn-success" Text="Edit"></asp:HyperLink>&nbsp;
                                         &nbsp;<asp:LinkButton ID="lnkDelete" runat="server" Text="Delete" class="btn btn-danger" OnClientClick="return confirm('Do you want to delete this category?');" OnClick="lnkDelete_Click"></asp:LinkButton>
+                                        &nbsp;&nbsp;<asp:HyperLink ID="hlimages" runat="server" Style="text-decoration: underline" class="btn btn-warning" Text="Images"></asp:HyperLink>
+                                        &nbsp;&nbsp;<asp:HyperLink ID="hlprices" runat="server" Style="text-decoration: underline" class="btn btn-flickr" Text="Prices"></asp:HyperLink>
                                                 </td>
                                             </tr>
                                         </ItemTemplate>
@@ -108,10 +110,14 @@
                                 <tfoot>
                                     <tr>
                                         <th style="text-align: center;">SR No.</th>
+                                         <th style="text-align: center">Type</th>
+                                        <th style="text-align: center">Brand</th>
+
                                         <th style="text-align: center">Name</th>
                                         <th style="text-align: center">Image</th>
                                          <th style="text-align: center">stock</th>
                                         <th style="text-align: center">GST</th>
+                                       
                                         <th style="text-align: center">Is Show</th>
                                         <th style="text-align: center">Action</th>
                                     </tr>
