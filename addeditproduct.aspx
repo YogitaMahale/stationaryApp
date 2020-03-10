@@ -24,77 +24,63 @@
 
 
                     <div class="form-group row">
-                        <div class="col-lg-6">
-                            <label for="exampleInputEmail1">Select Maincategory </label>
-                            <asp:DropDownList ID="ddlmaincategory" Class="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlmaincategory_SelectedIndexChanged" Width="500px" runat="server"></asp:DropDownList>
+                        <div class="col-lg-3 col-md-6">
+                            <label for="exampleInputEmail1">Main Category </label>
+                            <asp:DropDownList ID="ddlmaincategory" Class="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlmaincategory_SelectedIndexChanged"  runat="server"></asp:DropDownList>
 
                             <asp:RequiredFieldValidator ID="RFVddlCategory" runat="server" InitialValue="0" Display="Dynamic" ControlToValidate="ddlmaincategory" CssClass="error" ErrorMessage="Required Field" ValidationGroup="p1"></asp:RequiredFieldValidator>
 
                         </div>
-                        <div class="col-lg-6">
-                            <label for="exampleInputEmail1">Select Subcategory </label>
-                            <asp:DropDownList ID="ddlsubcategory" Class="form-control" Width="500px" AutoPostBack="true" OnSelectedIndexChanged="ddlsubcategory_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                        <div class="col-lg-3 col-md-6">
+                            <label for="exampleInputEmail1">Sub Category </label>
+                            <asp:DropDownList ID="ddlsubcategory" Class="form-control"  AutoPostBack="true" OnSelectedIndexChanged="ddlsubcategory_SelectedIndexChanged" runat="server"></asp:DropDownList>
 
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" InitialValue="0" Display="Dynamic" ControlToValidate="ddlsubcategory" CssClass="error" ErrorMessage="Required Field" ValidationGroup="p1"></asp:RequiredFieldValidator>
 
                         </div>
-                    </div>
-
-                    <div class="form-group row ">
-                        <div class="col-lg-6">
-                            <label for="exampleInputEmail1">Select Type </label>
-                            <asp:DropDownList ID="ddltype" Class="form-control" Width="500px" AutoPostBack="true" OnSelectedIndexChanged="ddltype_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                        <div class="col-lg-3 col-md-6">
+                            <label for="exampleInputEmail1">Type </label>
+                            <asp:DropDownList ID="ddltype" Class="form-control"  AutoPostBack="true" OnSelectedIndexChanged="ddltype_SelectedIndexChanged" runat="server"></asp:DropDownList>
 
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" InitialValue="0" Display="Dynamic" ControlToValidate="ddltype" CssClass="error" ErrorMessage="Required Field" ValidationGroup="p1"></asp:RequiredFieldValidator>
 
                         </div>
-                        <div class="col-lg-6">
-                            <label for="exampleInputEmail1">Select Brand </label>
-                            <asp:DropDownList ID="ddlbrand" Class="form-control" Width="500px" runat="server"></asp:DropDownList>
+                        <div class="col-lg-3 col-md-6">
+                            <label for="exampleInputEmail1">Brand </label>
+                            <asp:DropDownList ID="ddlbrand" Class="form-control"  runat="server"></asp:DropDownList>
 
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" InitialValue="0" Display="Dynamic" ControlToValidate="ddlsubcategory" CssClass="error" ErrorMessage="Required Field" ValidationGroup="p1"></asp:RequiredFieldValidator>
 
                         </div>
-
                     </div>
 
-
-
                     <div class="form-group row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-3 col-md-6">
                             <label for="exampleInputEmail1">Product Name </label>
                             <asp:TextBox ID="txtproductName" class="form-control" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RFVtxtCategoryName" runat="server" Display="Dynamic" ControlToValidate="txtproductName" CssClass="error" ErrorMessage="Required Field" ValidationGroup="c1"></asp:RequiredFieldValidator>
                         </div>
-                        <div class="col-lg-6">
-                            <label for="exampleInputEmail1">Gst</label>
+                        <div class="col-lg-3 col-md-6">
+                            <label for="exampleInputEmail1">GST</label>
                             <asp:TextBox ID="txtgst" class="form-control" runat="server"></asp:TextBox>
                              <cc1:FilteredTextBoxExtender ID="FTBtxtCustomerProductPrice" runat="server" FilterMode="ValidChars" TargetControlID="txtgst" ValidChars="01234567890."></cc1:FilteredTextBoxExtender>
                       
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" Display="Dynamic" ControlToValidate="txtgst" CssClass="error" ErrorMessage="Required Field" ValidationGroup="c1"></asp:RequiredFieldValidator>
                         </div>
-
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-3 col-md-6">
                             <label for="exampleInputEmail1">Stock</label>
                             <asp:TextBox ID="txtstock" class="form-control" runat="server"></asp:TextBox>
                             <cc1:FilteredTextBoxExtender ID="FTBtxtQuantites" runat="server" FilterMode="ValidChars" TargetControlID="txtstock" ValidChars="01234567890"></cc1:FilteredTextBoxExtender>
 
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" Display="Dynamic" ControlToValidate="txtstock" CssClass="error" ErrorMessage="Required Field" ValidationGroup="c1"></asp:RequiredFieldValidator>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-3 col-md-6">
                             <label for="exampleInputEmail1">MOQ</label>
                             <asp:TextBox ID="txtmoq" class="form-control" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" Display="Dynamic" ControlToValidate="txtmoq" CssClass="error" ErrorMessage="Required Field" ValidationGroup="c1"></asp:RequiredFieldValidator>
                         </div>
 
                     </div>
-
-
-
-
 
                     <div class="form-group row">
                         <div class="col-lg-6">
@@ -136,7 +122,50 @@
                         </div>
 
                     </div>
-                    
+                    <%--<div class="form-group">
+                        <div class="col-lg-6">
+                                <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: center;">SR No.</th>
+                                         <th style="text-align: center">Bank</th>
+                                        <th style="text-align: center">Price</th>
+
+                                    </tr>
+                                </thead>
+ 
+                                <tbody>
+                                    <asp:Repeater ID="repbank" runat="server" OnItemDataBound="repbank_ItemDataBound" >
+                                        <ItemTemplate>
+                                            <tr>
+                                                <td style="text-align: center;">
+                                                    <asp:Label ID="lblid" runat="server" Visible="false" Text='<%# Eval("id") %>'></asp:Label>
+                                                    <asp:Label ID="lblsrno" runat="server"></asp:Label>
+                                                </td>
+                                                 <td style="text-align: center;">
+                                                    <asp:Label ID="lblbankname" runat="server" Text='<%# Eval("bankname") %>'></asp:Label>
+                                                </td>
+                                                 <td style="text-align: center;">
+                                                    <asp:TextBox ID="txtprice" class="form-control" runat="server" Text="0"></asp:TextBox>
+                                                </td>
+                                               
+                                            </tr>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th style="text-align: center;">SR No.</th>
+                                         <th style="text-align: center">Bank</th>
+                                        <th style="text-align: center">Price</th>
+
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        
+                        </div>
+                    </div>--%>
                 </div>
                 <div class="box-footer">
                     <div class="form-group row" style="text-align:center;">

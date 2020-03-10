@@ -184,7 +184,13 @@ public partial class manageproduct : System.Web.UI.Page
 
             Image imgCategory = (Image)e.Item.FindControl("imgCategory");
             HyperLink hlEdit = (HyperLink)e.Item.FindControl("hlEdit");
+            HyperLink hlimages = (HyperLink)e.Item.FindControl("hlimages");
+            HyperLink hlprices = (HyperLink)e.Item.FindControl("hlprices");
+
             hlEdit.NavigateUrl = Page.ResolveUrl("~/addeditproduct.aspx?id=" + ocommon.Encrypt(DataBinder.Eval(e.Item.DataItem, "id").ToString(), true));
+            hlimages.NavigateUrl = Page.ResolveUrl("~/productimages.aspx?pid=" + ocommon.Encrypt(DataBinder.Eval(e.Item.DataItem, "id").ToString(), true)+"&productname="+ DataBinder.Eval(e.Item.DataItem, "productname").ToString());
+            hlprices.NavigateUrl = Page.ResolveUrl("~/productprices.aspx?pid=" + ocommon.Encrypt(DataBinder.Eval(e.Item.DataItem, "id").ToString(), true)+"&productname="+ DataBinder.Eval(e.Item.DataItem, "productname").ToString());
+
             imgCategory.ImageUrl = categoryFrontPath + DataBinder.Eval(e.Item.DataItem, "mainimage").ToString();
 
         }

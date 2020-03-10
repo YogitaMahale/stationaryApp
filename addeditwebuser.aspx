@@ -79,15 +79,14 @@
                 
                 <!-- /.box-body -->
 
+                
+            </div>
+            <!-- /.box -->
                 <div class="box-footer">
                       <asp:Button ID="btnSave" runat="server" ValidationGroup="c1" class="btn btn-primary" CausesValidation="true"  Text="Save" OnClick="btnSave_Click" />&nbsp;&nbsp;
                     <asp:Button ID="btnCancel" runat="server" CausesValidation="false" class="btn btn-primary" OnClick="btnCancel_Click" Text="Cancel" />
-                  <%----%>
-                     
+                                
                 </div>
-
-            </div>
-            <!-- /.box -->
 
             <!-- Form Element sizes -->
 
@@ -106,6 +105,7 @@
 
         <!--/.col (right) -->
     </div>
+        </div>
         <!-- jQuery 3 -->
     <script src="Template/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap 3.3.7 -->

@@ -15,6 +15,7 @@ public partial class addeditproduct : System.Web.UI.Page
     int categoryImageFrontHeight = 605;
     string categoryMainPath = "~/uploads/product/";
     string categoryFrontPath = "~/uploads/product/front/";
+    int srno = 1;
     common ocommon = new common();
 
     private void BindMaincategory()
@@ -44,25 +45,50 @@ public partial class addeditproduct : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            //BindBank();
+            
             BindMaincategory();
+            //BindBank();
             HtmlGenericControl hPageTitle = (HtmlGenericControl)this.Page.Master.FindControl("hPageTitle");
             if (Request.QueryString["id"] != null)
             {
                 BindCategory(Convert.ToInt64(ocommon.Decrypt(Request.QueryString["id"].ToString(), true)));
                 btnSave.Text = "Update";
-                hPageTitle.InnerText = "Product Update";
-                Page.Title = "Product Update";
+                hPageTitle.InnerText = "Update Product";
+                Page.Title = "Update Product";
             }
             else
             {
-                hPageTitle.InnerText = "Product Add";
-                Page.Title = "Product Add";
+                hPageTitle.InnerText = "New Product";
+                Page.Title = "New Product";
                 btnSave.Text = "Add";
 
             }
         }
     }
+
+    //private void BindBank()
+    //{
+
+    //    DataTable dtbank = (new Cls_bankmaster_b().SelectAll());
+    //    if (dtbank != null)
+    //    {
+    //        if (dtbank.Rows.Count > 0)
+    //        {
+    //            repbank.DataSource = dtbank;
+    //            repbank.DataBind();
+    //        }
+    //        else
+    //        {
+    //            repbank.DataSource = null;
+    //            repbank.DataBind();
+    //        }
+    //    }
+    //    else
+    //    {
+    //        repbank.DataSource = null;
+    //        repbank.DataBind();
+    //    }
+    //}
 
     private void Clear()
     {
@@ -297,4 +323,15 @@ public partial class addeditproduct : System.Web.UI.Page
             }
         }
     }
+
+    //protected void repbank_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    //{
+    //    if ((e.Item.ItemType == ListItemType.Item) || (e.Item.ItemType == ListItemType.AlternatingItem))
+    //    {
+    //        Label lblsrno = (Label)e.Item.FindControl("lblsrno");
+    //        lblsrno.Text = srno.ToString();
+    //        srno++;
+            
+    //    }
+    //}
 }
