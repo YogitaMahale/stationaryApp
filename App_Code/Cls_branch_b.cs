@@ -31,6 +31,21 @@ namespace BusinessLayer
                 return dt;
             }
         }
+        public DataTable SelectAllByBankId(Int64 id)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                Cls_branch_db objCls_branch_db = new Cls_branch_db();
+                dt = objCls_branch_db.SelectAllByBankId(id);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                ErrHandler.writeError(ex.Message, ex.StackTrace);
+                return dt;
+            }
+        }
         public branch SelectById(Int64 id)
         {
             branch objbranch = new branch();

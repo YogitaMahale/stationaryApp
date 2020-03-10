@@ -78,7 +78,7 @@ public partial class _Default : System.Web.UI.Page
                             }
                             else
                             {
-                                ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "", "alert('Your Account Under Admin Observation.Please wait for admin confirmation')", true);
+                                ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "", "alert('Your Account Under Admin Observation. Please wait for admin confirmation')", true);
                             }
 
 
@@ -105,7 +105,7 @@ public partial class _Default : System.Web.UI.Page
                             {
                                 Session.Timeout = 120;
 
-                                Session["userid"] = Convert.ToString(dtUser.Rows[0]["branchid"]);
+                                Session["userid"] = Convert.ToString(dtUser.Rows[0]["zoneid"]);
                                 Session["username"] = dtUser.Rows[0]["name"].ToString();
                                 Session["type"] = ddlbranchbank.SelectedValue;
                                 Session["bid"] = dtUser.Rows[0]["branchid"].ToString();
