@@ -79,6 +79,8 @@ public partial class _Default : System.Web.UI.Page
                                 Session["username"] = dtUser.Rows[0]["name"].ToString();
                                 Session["type"] = ddlbranchbank.SelectedValue;
                                 Session["bid"] = dtUser.Rows[0]["bankid"].ToString();
+
+                                Session["bankid"]=  dtUser.Rows[0]["bankid"].ToString();
                                 con.Close();
                                 Response.Redirect(Page.ResolveUrl("~/bankdashboard.aspx"));
                             }
@@ -94,7 +96,7 @@ public partial class _Default : System.Web.UI.Page
                 }
                 else
                 {
-                    query = "select * from branchmaster where  lower(loginname)=lower('" + txtUserName.Text.Trim() + "') and password='" + txtPassword.Text.Trim() + "' and isdeleted=0";
+                    query = "select *,(select bankid from zonemaster where id=zoneid) as bankid from branchmaster where  lower(loginname)=lower('" + txtUserName.Text.Trim() + "') and password='" + txtPassword.Text.Trim() + "' and isdeleted=0";
                     SqlCommand cmd = new SqlCommand(query);
                     SqlDataAdapter sda = new SqlDataAdapter();
                     DataTable dtUser = new DataTable();
@@ -115,7 +117,7 @@ public partial class _Default : System.Web.UI.Page
                                 Session["username"] = dtUser.Rows[0]["name"].ToString();
                                 Session["type"] = ddlbranchbank.SelectedValue;
                                 Session["bid"] = dtUser.Rows[0]["zoneid"].ToString();
-
+                                Session["bankid"] = dtUser.Rows[0]["bankid"].ToString();
                                 con.Close();
                                 Response.Redirect(Page.ResolveUrl("~/branchdashboard.aspx"));
                             }
