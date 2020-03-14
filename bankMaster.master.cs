@@ -25,6 +25,7 @@ public partial class bankMaster : System.Web.UI.MasterPage
                 }
                 else
                 {
+                    loginUsername.InnerText = Session["username"].ToString();
                     string dd = Session["type"].ToString();
                 }
             }
