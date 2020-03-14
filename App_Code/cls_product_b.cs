@@ -162,7 +162,7 @@ namespace BusinessLayer
         private string _longdescp;
         private Boolean _isactive;
         private Boolean _isdeleted;
-
+        private decimal _mrp;
 
         #endregion
 
@@ -245,7 +245,11 @@ namespace BusinessLayer
             get { return _isdeleted; }
             set { _isdeleted = value; }
         }
-
+        public decimal mrp
+        {
+            get { return _mrp; }
+            set { _mrp = value; }
+        }
 
         #endregion
     }

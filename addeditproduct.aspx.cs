@@ -132,6 +132,7 @@ public partial class addeditproduct : System.Web.UI.Page
             txtgst.Text = objproductmaster.gst.ToString() ;
             txtstock.Text = objproductmaster.stock.ToString();
             txtmoq.Text = objproductmaster.moq.ToString();
+            txtmrp.Text = objproductmaster.mrp .ToString();
             txtShortDescription.Text = objproductmaster.shortdescp.ToString();
             txtLongDescription.Text = objproductmaster.longdescp.ToString() ;
             if (!string.IsNullOrEmpty(objproductmaster.mainimage))
@@ -172,7 +173,7 @@ public partial class addeditproduct : System.Web.UI.Page
         objproductmaster.moq = Convert.ToInt64(txtmoq.Text.Trim());
         objproductmaster.shortdescp = txtShortDescription.Text.Trim();
         objproductmaster.longdescp =txtLongDescription.Text;
-
+        objproductmaster.mrp = Convert.ToDecimal(txtmrp.Text);
         if (ViewState["fileName"] != null)
         {
             objproductmaster.mainimage = ViewState["fileName"].ToString();

@@ -116,9 +116,12 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class="col-lg-6">
-                            <br />
-                            
+                        <div class="col-lg-3 col-md-6">
+                            <label for="exampleInputEmail1">Mrp</label>
+                            <asp:TextBox ID="txtmrp" class="form-control" runat="server"></asp:TextBox>
+                             <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" FilterMode="ValidChars" TargetControlID="txtmrp" ValidChars="01234567890."></cc1:FilteredTextBoxExtender>
+                      
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" Display="Dynamic" ControlToValidate="txtmrp" CssClass="error" ErrorMessage="Required Field" ValidationGroup="c1"></asp:RequiredFieldValidator>
                         </div>
 
                     </div>

@@ -113,7 +113,10 @@ public partial class manageorders : System.Web.UI.Page
              
             HyperLink hlEdit = (HyperLink)e.Item.FindControl("hlEdit");
             hlEdit.NavigateUrl = Page.ResolveUrl("~/addorder.aspx?id=" + ocommon.Encrypt(DataBinder.Eval(e.Item.DataItem, "oid").ToString(), true));
-             
+
+            HyperLink hlinvoice = (HyperLink)e.Item.FindControl("hlinvoice");
+            hlinvoice.NavigateUrl = Page.ResolveUrl("~/orderinvoice.aspx?id=" + ocommon.Encrypt(DataBinder.Eval(e.Item.DataItem, "oid").ToString(), true));
+            
         }
     }
 

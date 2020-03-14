@@ -119,7 +119,7 @@ namespace DatabaseLayer
                                     objbankmaster.moq = Convert.ToInt64(ds.Tables[0].Rows[0]["moq"]);
                                     objbankmaster.shortdescp = Convert.ToString(ds.Tables[0].Rows[0]["shortdescp"]);
                                     objbankmaster.longdescp = Convert.ToString(ds.Tables[0].Rows[0]["longdescp"]);
- 
+                                    objbankmaster.mrp  = Convert.ToDecimal(ds.Tables[0].Rows[0]["mrp"]);
 
                                 }
                             }
@@ -163,7 +163,7 @@ namespace DatabaseLayer
                 cmd.Parameters.AddWithValue("@moq", objproductmaster.moq );
                 cmd.Parameters.AddWithValue("@shortdescp", objproductmaster.shortdescp );
                 cmd.Parameters.AddWithValue("@longdescp", objproductmaster.longdescp );
- 
+                cmd.Parameters.AddWithValue("@mrp", objproductmaster.mrp);
 
                 ConnectionString.Open();
                 cmd.ExecuteNonQuery();
@@ -205,7 +205,7 @@ namespace DatabaseLayer
                 cmd.Parameters.AddWithValue("@moq", objproductmaster.moq);
                 cmd.Parameters.AddWithValue("@shortdescp", objproductmaster.shortdescp);
                 cmd.Parameters.AddWithValue("@longdescp", objproductmaster.longdescp);
-
+                cmd.Parameters.AddWithValue("@mrp", objproductmaster.mrp);
                 ConnectionString.Open();
                 cmd.ExecuteNonQuery();
                 result = Convert.ToInt64(param.Value);

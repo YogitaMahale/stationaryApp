@@ -10,7 +10,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 public partial class manageproduct : System.Web.UI.Page
 {
-    string categoryFrontPath = "~/uploads/subcategory/front/";
+    string categoryFrontPath = "~/uploads/product/front/";
     common ocommon = new common();
     private void BindMaincategory()
     {

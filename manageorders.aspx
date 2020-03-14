@@ -65,9 +65,9 @@
                                                 
                                                 <td style="text-align: center">
                                                     
-                                     <asp:HyperLink ID="hlEdit" Visible="false" runat="server" CssClass="btn btn-sm btn-success" Text="Edit"></asp:HyperLink>&nbsp;
-                            &nbsp;<asp:LinkButton ID="lnkTodayDelete" Visible="false" runat="server" Text="Delete" CommandArgument='<%# Eval("oid") %>' CssClass="btn btn-sm btn-danger" OnClientClick="return confirm('Do you want to delete this order?');" OnClick="lnkDelete_Click"></asp:LinkButton>
-                                                   
+                                     <asp:HyperLink ID="hlEdit"  runat="server" CssClass="btn btn-sm btn-success" Text="Edit"></asp:HyperLink>&nbsp;
+                                                     <asp:HyperLink ID="hlinvoice"  runat="server" CssClass="btn btn-sm btn-success" Text="Invoice"></asp:HyperLink>&nbsp;
+                                                
                                                 </td>
                                             </tr>
                                         </ItemTemplate>
