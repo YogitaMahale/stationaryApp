@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="branchMaster.master.cs" Inherits="branchMaster" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc" %>
 
 <!DOCTYPE html>
 
@@ -385,7 +386,7 @@
                         </a>
                     </li>
                       <li>
-                        <a href="pages/widgets.html">
+                        <a href="branchchangePassword.aspx">
                             <i class="fa fa-th"></i><span>Change Password</span>
                             <%--<span class="pull-right-container">
                                 <small class="label pull-right bg-green">new</small>

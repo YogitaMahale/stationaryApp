@@ -20,6 +20,11 @@ public partial class _Default : System.Web.UI.Page
         {
             AllSessionNull();
         }
+        if (Request.QueryString["reg"] != null)
+        {
+            ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "", "alert('Registeration Complete. Please wait for admin approval.')", true);
+
+        }
     }
 
     public void Clear()
@@ -34,6 +39,7 @@ public partial class _Default : System.Web.UI.Page
         Session["userid"] = null;
         Session["type"] = null;
         Session["bid"] = null;
+        Session["username"] = null;
 
     }
 
@@ -78,7 +84,7 @@ public partial class _Default : System.Web.UI.Page
                             }
                             else
                             {
-                                ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "", "alert('Your Account Under Admin Observation.Please wait for admin confirmation')", true);
+                                ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "", "alert('Your Account Under Admin Observation. Please wait for admin confirmation')", true);
                             }
 
 
@@ -108,7 +114,7 @@ public partial class _Default : System.Web.UI.Page
                                 Session["userid"] = Convert.ToString(dtUser.Rows[0]["branchid"]);
                                 Session["username"] = dtUser.Rows[0]["name"].ToString();
                                 Session["type"] = ddlbranchbank.SelectedValue;
-                                Session["bid"] = dtUser.Rows[0]["branchid"].ToString();
+                                Session["bid"] = dtUser.Rows[0]["zoneid"].ToString();
 
                                 con.Close();
                                 Response.Redirect(Page.ResolveUrl("~/branchdashboard.aspx"));

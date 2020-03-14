@@ -11,18 +11,26 @@ public partial class branchMaster : System.Web.UI.MasterPage
     {
         try
         {
-           
-            if (Session["type"].ToString().ToLower().Trim() != "Branch".ToLower().Trim() || Session["userid"] == null || Session["username"] == null || Session["type"] == null || Session["bid"] == null)
+
+            //if (Session["type"].ToString().ToLower().Trim() != "Branch".ToLower().Trim() || Session["userid"] == null || Session["username"] == null || Session["type"] == null || Session["bid"] == null)
+            if (Session["userid"] == null || Session["username"] == null || Session["type"] == null || Session["bid"] == null)
             {
-                
-                Response.Redirect(Page.ResolveUrl("~/Default.aspx"));
+                if (Session["type"].ToString().ToLower().Trim() != "Branch".ToLower().Trim())
+                    Response.Redirect(Page.ResolveUrl("~/Default.aspx"));
             }
             else
             {
-                string dd = Session["type"].ToString();
+                if (Session["type"].ToString().ToLower().Trim() != "Branch".ToLower().Trim())
+                {
+                    Response.Redirect(Page.ResolveUrl("~/Default.aspx"));
+                }
+                else
+                {
+                    string dd = Session["type"].ToString();
+                }
             }
         }
-        catch { }
+        catch (Exception ex) { }
         finally { }
     }
     protected void Logout_Click(Object sender, EventArgs e)
@@ -30,7 +38,7 @@ public partial class branchMaster : System.Web.UI.MasterPage
         Session["userid"] = null;
         Session["username"] = null;
         Session["type"] = null;
-        Session["bid"] = null;        
+        Session["bid"] = null;
         Response.Redirect(Page.ResolveUrl("~/Default.aspx"));
 
     }

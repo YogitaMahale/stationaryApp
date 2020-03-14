@@ -56,6 +56,33 @@ namespace DatabaseLayer
             }
             return ds.Tables[0];
         }
+
+        public DataTable SelectAllByBankId(Int64 id)
+        {
+            DataSet ds = new DataSet();
+            SqlDataAdapter da;
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "branch_SelectAllByBankId";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = ConnectionString;
+                cmd.Parameters.AddWithValue("@zoneid", id);
+                ConnectionString.Open();
+                da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+                ErrHandler.writeError(ex.Message, ex.StackTrace);
+                return null;
+            }
+            finally
+            {
+                ConnectionString.Close();
+            }
+            return ds.Tables[0];
+        }
         public branch SelectById(Int64 id)
         {
             SqlDataAdapter da;
@@ -247,7 +274,32 @@ namespace DatabaseLayer
             }
             return true;
         }
-              
+
+
+        public bool ToggleIsActive(Int64 id)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "branch_ToggleIsActive";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = ConnectionString;
+                cmd.Parameters.AddWithValue("@branchid", id);
+                //cmd.Parameters.AddWithValue("@isactive", IsActive);
+                ConnectionString.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                ConnectionString.Close();
+            }
+            return true;
+        }
+
         #endregion
 
 

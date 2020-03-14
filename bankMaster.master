@@ -1,5 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="bankMaster.master.cs" Inherits="bankMaster" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc" %>
+
 <!DOCTYPE html>
 
 <html>
@@ -40,7 +42,7 @@
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <asp:ContentPlaceHolder id="head" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <%--<body>
@@ -53,6 +55,7 @@
     </form>
 </body>--%>
 <body class="hold-transition skin-blue sidebar-mini">
+
     <div class="wrapper">
 
         <header class="main-header">
@@ -164,28 +167,28 @@
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-users text-aqua"></i>5 new members joined today
-                    </a>
+                                            </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-warning text-yellow"></i>Very long description here that may not fit into the
                       page and may cause design problems
-                    </a>
+                                            </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-users text-red"></i>5 new members joined
-                    </a>
+                                            </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-shopping-cart text-green"></i>25 sales made
-                    </a>
+                                            </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-user text-red"></i>You changed your username
-                    </a>
+                                            </a>
                                         </li>
                                     </ul>
                                 </li>
@@ -353,8 +356,8 @@
                 <!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
-                   
-                  <%--  <li class="treeview">
+
+                    <%--  <li class="treeview">
                         <a href="#">
                             <i class="fa fa-files-o"></i>
                             <span>Master</span>
@@ -368,47 +371,48 @@
                            
                         </ul>
                     </li>--%>
-                     <li>
+                    <li>
                         <a href="bankdashboard.aspx">
                             <i class="fa fa-th"></i><span>Dashboard</span>
-                           <%-- <span class="pull-right-container">
+                            <%-- <span class="pull-right-container">
                                 <small class="label pull-right bg-green">new</small>
                             </span>--%>
                         </a>
                     </li>
                     <li>
-                        <a href="pages/widgets.html">
+                        <%--<a href="pages/widgets.html">--%>
+                        <a href="branchlist.aspx">
                             <i class="fa fa-th"></i><span>Branch List</span>
                             <%--<span class="pull-right-container">
                                 <small class="label pull-right bg-green">new</small>
                             </span>--%>
                         </a>
                     </li>
-                      <li>
-                        <a href="pages/widgets.html">
+                    <li>
+                        <a href="managebranchorders.aspx">
                             <i class="fa fa-th"></i><span>Manage Order</span>
                             <%--<span class="pull-right-container">
                                 <small class="label pull-right bg-green">new</small>
                             </span>--%>
                         </a>
                     </li>
-                     <li>
-                        <a href="pages/widgets.html">
+                    <li>
+                        <a href="bankchangepassword.aspx">
                             <i class="fa fa-th"></i><span>Change Password</span>
                             <%--<span class="pull-right-container">
                                 <small class="label pull-right bg-green">new</small>
                             </span>--%>
                         </a>
                     </li>
-                     <li>
-                       <a href="#" onServerClick="Logout_Click" runat="server"  >
+                    <li>
+                        <a href="#" onserverclick="Logout_Click" runat="server">
                             <i class="fa fa-th"></i><span>Logout</span>
-                          <%--  <span class="pull-right-container">
+                            <%--  <span class="pull-right-container">
                                 <small class="label pull-right bg-green">new</small>
                             </span>--%>
                         </a>
                     </li>
-                   <%-- <li class="treeview">
+                    <%-- <li class="treeview">
                         <a href="#">
                             <i class="fa fa-pie-chart"></i>
                             <span>Charts</span>
@@ -440,7 +444,7 @@
                             <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i>Modals</a></li>
                         </ul>
                     </li>--%>
-                   <%-- <li class="treeview">
+                    <%-- <li class="treeview">
                         <a href="#">
                             <i class="fa fa-edit"></i><span>Forms</span>
                             <span class="pull-right-container">
@@ -536,8 +540,8 @@
                                 </ul>
                             </li>
                             <li><a href="#"><i class="fa fa-circle-o"></i>Level One</a></li>--%>
-                        </ul>
-                  
+                </ul>
+
             </section>
             <!-- /.sidebar -->
         </aside>
@@ -547,7 +551,7 @@
 
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                 <h1 runat="server" id="hPagebankTitle"></h1>
+                <h1 runat="server" id="hPagebankTitle"></h1>
                 <%--<h1>Dashboard
        
                     <small>Control panel</small>
@@ -562,6 +566,8 @@
             <section class="content">
                 <form id="form1" runat="server">
                     <div>
+                        <cc:ToolkitScriptManager ID="scmSlc" runat="server"></cc:ToolkitScriptManager>
+
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
                     </div>
@@ -1292,7 +1298,7 @@
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
         $.widget.bridge('uibutton', $.ui.button);
-</script>
+    </script>
     <!-- Bootstrap 3.3.7 -->
     <script src="Template/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Morris.js charts -->

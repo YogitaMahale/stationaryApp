@@ -79,7 +79,35 @@ namespace DatabaseLayer
             return ds.Tables[0];
         }
 
-       
+
+        public DataTable order_SelectAllByZoneId(Int64 zoneid)
+        {
+            DataSet ds = new DataSet();
+            SqlDataAdapter da;
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "order_SelectAllByZoneId";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@zoneid", zoneid);
+                cmd.Connection = ConnectionString;
+                ConnectionString.Open();
+                da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+                ErrHandler.writeError(ex.Message, ex.StackTrace);
+                return null;
+            }
+            finally
+            {
+                ConnectionString.Close();
+            }
+            return ds.Tables[0];
+        }
+
+
         public orders  SelectById(Int64 id)
         {
             SqlDataAdapter da;
