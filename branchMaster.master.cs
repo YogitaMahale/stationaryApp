@@ -11,7 +11,7 @@ public partial class branchMaster : System.Web.UI.MasterPage
     {
         try
         {
-
+            
             //if (Session["type"].ToString().ToLower().Trim() != "Branch".ToLower().Trim() || Session["userid"] == null || Session["username"] == null || Session["type"] == null || Session["bid"] == null)
             if (Session["userid"] == null || Session["username"] == null || Session["type"] == null || Session["bid"] == null)
             {
@@ -27,7 +27,9 @@ public partial class branchMaster : System.Web.UI.MasterPage
                 else
                 {
                     string dd = Session["type"].ToString();
+                    loginUsername.InnerText = Session["username"].ToString();
                 }
+
             }
         }
         catch (Exception ex) { }
