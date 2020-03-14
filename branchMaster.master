@@ -378,6 +378,14 @@
                         </a>
                     </li>
                     <li>
+                        <a href="#" runat="server" onserverclick="EP_ServerClick" >
+                            <i class="fa fa-th"></i><span>Edit Profile</span>
+                            <%--<span class="pull-right-container">
+                                <small class="label pull-right bg-green">new</small>
+                            </span>--%>
+                        </a>
+                    </li>
+                    <li>
                         <a href="manageorders.aspx">
                             <i class="fa fa-th"></i><span>Order</span>
                             <%--<span class="pull-right-container">

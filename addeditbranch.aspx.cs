@@ -19,7 +19,7 @@ public partial class addeditbranch : System.Web.UI.Page
         if (!Page.IsPostBack)
         {
             Bind(); // Bank , State
-            HtmlGenericControl hPageTitle = (HtmlGenericControl)this.Page.Master.FindControl("hPageTitle");
+            HtmlGenericControl hPageTitle = (HtmlGenericControl)this.Page.Master.FindControl("hPagebranchTitle");
             if (Request.QueryString["id"] != null)
             {
                 BindBranch(Convert.ToInt64(ocommon.Decrypt(Request.QueryString["id"].ToString(), true)));

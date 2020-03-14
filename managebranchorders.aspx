@@ -1,12 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/bankMaster.master" AutoEventWireup="true" CodeFile="managebranchorders.aspx.cs" Inherits="managebranchorders" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-
-
             <div class="row">
                 <div class="col-xs-12">
 
@@ -35,7 +33,7 @@
                                         <th style="text-align: center">Branch</th>
                                         <th style="text-align: center">Order Date</th>
                                         <th style="text-align: center">Amount</th>
-                                        
+
                                         <th style="text-align: center">Action</th>
 
                                     </tr>
@@ -58,16 +56,17 @@
                                                 <td style="text-align: center">
                                                     <asp:Label ID="lblOrderDate" runat="server" Text='<%# Eval("orderdate") %>'></asp:Label>
                                                 </td>
-                                                 
+
                                                 <td style="text-align: center">
                                                     <asp:Label ID="lblAmount" runat="server" Text='<%# Eval("totalamount") %>'></asp:Label>
                                                 </td>
-                                                
+
                                                 <td style="text-align: center">
-                                                    
+
+                                                    <asp:HyperLink ID="hlinvoice" runat="server" CssClass="btn btn-sm btn-warning" Text="Invoice" Target="_blank"></asp:HyperLink>&nbsp;&nbsp; 
                                      <asp:HyperLink ID="hlEdit" Visible="false" runat="server" CssClass="btn btn-sm btn-success" Text="Edit"></asp:HyperLink>&nbsp;
                             &nbsp;<asp:LinkButton ID="lnkTodayDelete" Visible="false" runat="server" Text="Delete" CommandArgument='<%# Eval("oid") %>' CssClass="btn btn-sm btn-danger" OnClientClick="return confirm('Do you want to delete this order?');" OnClick="lnkDelete_Click"></asp:LinkButton>
-                                                   
+
                                                 </td>
                                             </tr>
                                         </ItemTemplate>
@@ -81,7 +80,7 @@
                                         <th style="text-align: center">Branch</th>
                                         <th style="text-align: center">Order Date</th>
                                         <th style="text-align: center">Amount</th>
-                                        
+
                                         <th style="text-align: center">Action</th>
                                     </tr>
                                 </tfoot>
@@ -95,6 +94,13 @@
             </div>
             <!-- /.row -->
             <!-- ./wrapper -->
+
+
+
+
+
+
+
         </ContentTemplate>
     </asp:UpdatePanel>
 
@@ -115,6 +121,7 @@
     <script src="Template/dist/js/demo.js"></script>
     <!-- page script -->
     <script>
+
         $(function () {
             $('#example1').DataTable()
             $('#example2').DataTable({

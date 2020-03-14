@@ -65,8 +65,8 @@ public partial class managebranches : System.Web.UI.Page
     {
         if ((e.Item.ItemType == ListItemType.Item) || (e.Item.ItemType == ListItemType.AlternatingItem))
         {
-            HyperLink hlEdit = (HyperLink)e.Item.FindControl("hlEdit");
-            hlEdit.NavigateUrl = Page.ResolveUrl("~/addeditbranch.aspx?id=" + ocommon.Encrypt(DataBinder.Eval(e.Item.DataItem, "branchid").ToString(), true));
+            //HyperLink hlEdit = (HyperLink)e.Item.FindControl("hlEdit");
+            //hlEdit.NavigateUrl = Page.ResolveUrl("~/addeditbranch.aspx?id=" + ocommon.Encrypt(DataBinder.Eval(e.Item.DataItem, "branchid").ToString(), true));
 
             CheckBox chkid = (CheckBox)e.Item.FindControl("IsActive");
             chkid.InputAttributes.Add("data-id", DataBinder.Eval(e.Item.DataItem, "branchid").ToString());

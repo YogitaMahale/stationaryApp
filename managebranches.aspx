@@ -67,8 +67,8 @@
                                                 </td>
 
                                                 <td style="text-align: center">
-                                                    <asp:HyperLink ID="hlEdit" runat="server" class="btn btn-success" Text="EDIT"></asp:HyperLink>&nbsp;
-                                        &nbsp;<asp:LinkButton ID="lnkDelete" runat="server" Text="DELETE" class="btn btn-danger" OnClientClick="return confirm('Do you want to delete this record?');" OnClick="lnkDelete_Click"></asp:LinkButton>
+                                                    <%--<asp:HyperLink ID="hlEdit" runat="server" class="btn btn-success" Text="EDIT"></asp:HyperLink>&nbsp;&nbsp;--%>
+                                                    <asp:LinkButton ID="lnkDelete" runat="server" Text="DELETE" class="btn btn-danger" OnClientClick="return confirm('Do you want to delete this record?');" OnClick="lnkDelete_Click"></asp:LinkButton>
                                                 </td>
                                             </tr>
                                         </ItemTemplate>
@@ -129,7 +129,7 @@
                 else
                     value = false;
 
-                alert("checked =" + id + " & value = " + value + " & " + value2);
+                //alert("checked =" + id + " & value = " + value + " & " + value2);
                 $.ajax({
                     type: "POST",
                     url: "managebranches.aspx/ToggleIsActive",
