@@ -66,7 +66,7 @@
                                                 <td style="text-align: center">
                                                     
                                      <asp:HyperLink ID="hlEdit"  runat="server" CssClass="btn btn-sm btn-success" Text="Edit"></asp:HyperLink>&nbsp;
-                                                     <asp:HyperLink ID="hlinvoice"  runat="server" CssClass="btn btn-sm btn-success" Text="Invoice"></asp:HyperLink>&nbsp;
+                                                     <asp:HyperLink ID="hlinvoice"  runat="server" CssClass="btn btn-sm btn-warning" Text="Invoice" Target="_blank"></asp:HyperLink>&nbsp;
                                                 
                                                 </td>
                                             </tr>

@@ -161,10 +161,15 @@ public partial class registerbranch : System.Web.UI.Page
 
                 Response.Redirect(Page.ResolveUrl("~/Default.aspx?reg=" + ocommon.Encrypt(Result.ToString(), true)));
             }
+            else if(Result < -1){
+                Clear();
+                ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "", "alert('Mobile number is already registered...')", true);
+
+            }
             else
             {
                 Clear();
-                ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "", "Registeration Failed...", true);
+                ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "", "alert('Registeration Failed...')", true);
                 //spnMessage.Style.Add("color", "red");
                 //spnMessage.InnerText = "Failed to insert...";
             }
