@@ -58,7 +58,7 @@ public partial class bankMaster : System.Web.UI.MasterPage
         Session["username"] = null;
         Session["type"] = null;
         Session["bid"] = null;
-        Response.Redirect(Page.ResolveUrl("~/Default.aspx"));
+        Response.Redirect(Page.ResolveUrl("~/Default.aspx?logout=yes"));
 
     }
 }

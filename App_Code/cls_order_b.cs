@@ -46,7 +46,23 @@ namespace BusinessLayer
                 return dt;
             }
         }
-       
+
+        public DataTable order_SelectAllByZoneId(Int64 zoneid)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                cls_order_db objcls_order_db = new cls_order_db();
+                dt = objcls_order_db.order_SelectAllByZoneId(zoneid);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                ErrHandler.writeError(ex.Message, ex.StackTrace);
+                return dt;
+            }
+        }
+
 
 
         public orders  SelectById(Int64 cid)

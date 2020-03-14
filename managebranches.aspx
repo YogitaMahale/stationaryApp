@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/superadmin.master" AutoEventWireup="true" CodeFile="managebranches.aspx.cs" Inherits="managebranches" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -13,27 +13,28 @@
                     <div class="box box-primary">
                         <div class="box-header">
                             <div class="text-center">
-                            <b id="spnMessage" visible="false" runat="server"></b>
-                        </div>
+                                <b id="spnMessage" visible="false" runat="server"></b>
+                            </div>
                             <div style="text-align: right;">
                                 <asp:Button ID="btnNewBranch" runat="server" Text="New Branch" class="btn btn-Normal btn-success" OnClick="btnNewBranch_Click" />
                             </div>
                         </div>
-                        
-                        
+
+
                         <!-- /.box-header -->
                         <div class="box-body">
-                            
+
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        
+
+                                        <th style="text-align: center">Active</th>
                                         <th style="text-align: center">Bank</th>
                                         <th style="text-align: center">Zone</th>
                                         <th style="text-align: center">Branch</th>
                                         <th style="text-align: center">Login Name</th>
                                         <th style="text-align: center">Password</th>
-                                        
+
                                         <th style="text-align: center">Action</th>
                                     </tr>
                                 </thead>
@@ -43,6 +44,11 @@
                                     <asp:Repeater ID="repCategory" runat="server" OnItemDataBound="repCategory_ItemDataBound">
                                         <ItemTemplate>
                                             <tr>
+                                                <td style="text-align: center">
+                                                    <%--<asp:CheckBox ID="IsActive" runat="server" AutoPostBack="true" Checked='<%# Eval("isactive") %>' OnCheckedChanged="IsActive_CheckedChanged" />--%>
+                                                    <asp:CheckBox ID="IsActive" class="checkedchanged" runat="server" Checked='<%# Eval("isactive") %>' />
+
+                                                </td>
                                                 <td style="text-align: center">
                                                     <asp:Label ID="lblid" runat="server" Visible="false" Text='<%# Eval("branchid") %>'></asp:Label>
                                                     <asp:Label ID="lblbankname" runat="server" Text='<%# Eval("bankname") %>'></asp:Label>
@@ -59,7 +65,7 @@
                                                 <td style="text-align: center">
                                                     <asp:Label ID="lblpassword" runat="server" Text='<%# Eval("password") %>'></asp:Label>
                                                 </td>
-                                                
+
                                                 <td style="text-align: center">
                                                     <asp:HyperLink ID="hlEdit" runat="server" class="btn btn-success" Text="EDIT"></asp:HyperLink>&nbsp;
                                         &nbsp;<asp:LinkButton ID="lnkDelete" runat="server" Text="DELETE" class="btn btn-danger" OnClientClick="return confirm('Do you want to delete this record?');" OnClick="lnkDelete_Click"></asp:LinkButton>
@@ -71,12 +77,13 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
+                                        <th style="text-align: center">Active</th>
                                         <th style="text-align: center">Bank</th>
                                         <th style="text-align: center">Zone</th>
                                         <th style="text-align: center">Branch</th>
                                         <th style="text-align: center">Login Name</th>
                                         <th style="text-align: center">Password</th>
-                                        
+
                                         <th style="text-align: center">Action</th>
                                     </tr>
                                 </tfoot>
@@ -111,6 +118,37 @@
     <!-- page script -->
     <script>
         $(function () {
+            $(".checkedchanged").click(function () {
+
+                var id = $(event.target).attr("data-id");
+
+                var value2 = $(event.target).attr("checked");
+
+                if ($('[id*=IsActive]').is(':checked'))
+                    value = true;
+                else
+                    value = false;
+
+                alert("checked =" + id + " & value = " + value + " & " + value2);
+                $.ajax({
+                    type: "POST",
+                    url: "managebranches.aspx/ToggleIsActive",
+                    data: '{"id" : "' + id + '"}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (d) {
+                        alert("Operation Successful!!!");
+                    },
+                    error: function (err) {
+                        alert("Operation Failed...");
+                        console.log(err);
+                    }
+                    //,error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    //alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+                    //}
+
+                });
+            });
             $('#example1').DataTable()
             $('#example2').DataTable({
                 'paging': true,

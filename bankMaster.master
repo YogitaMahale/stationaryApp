@@ -389,7 +389,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="pages/widgets.html">
+                        <a href="managebranchorders.aspx">
                             <i class="fa fa-th"></i><span>Manage Order</span>
                             <%--<span class="pull-right-container">
                                 <small class="label pull-right bg-green">new</small>

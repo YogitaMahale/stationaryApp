@@ -274,7 +274,32 @@ namespace DatabaseLayer
             }
             return true;
         }
-              
+
+
+        public bool ToggleIsActive(Int64 id)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "branch_ToggleIsActive";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = ConnectionString;
+                cmd.Parameters.AddWithValue("@branchid", id);
+                //cmd.Parameters.AddWithValue("@isactive", IsActive);
+                ConnectionString.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                ConnectionString.Close();
+            }
+            return true;
+        }
+
         #endregion
 
 

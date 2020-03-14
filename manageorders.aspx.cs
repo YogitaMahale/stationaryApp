@@ -38,7 +38,7 @@ public partial class manageorders : System.Web.UI.Page
 
     private void bindOrders()
     {
-        Int64 branchid = Convert.ToInt64(Session["bid"].ToString());
+        Int64 branchid = Convert.ToInt64(Session["userid"].ToString());
      
         
             DataTable dtproduct = (new cls_order_b().orderSelectAllby_branchId(branchid));

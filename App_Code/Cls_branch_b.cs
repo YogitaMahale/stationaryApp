@@ -113,7 +113,23 @@ namespace BusinessLayer
             }
             return result;
         }
-        
+
+        public bool ToggleIsActive(Int64 id)
+        {
+            try
+            {
+                Cls_branch_db objCls_branch_db = new Cls_branch_db();
+                if (objCls_branch_db.ToggleIsActive(id))
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
 
 

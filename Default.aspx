@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Milk | Log in</title>
+    <title>All Stationary | Log in</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -63,8 +63,8 @@
                 <div class="form-group has-feedback">
 
                     <asp:DropDownList ID="ddlbranchbank" Class="form-control" runat="server">
-                        <asp:ListItem Selected="True" Value="0" Text="--Select Bank or Branch--"></asp:ListItem>
-                        <asp:ListItem Text="Bank" Value="bank"></asp:ListItem>
+                        <%--<asp:ListItem Selected="True" Value="0" Text="--Select Bank or Branch--"></asp:ListItem>--%>
+                        <asp:ListItem Selected="True" Text="Bank" Value="bank"></asp:ListItem>
                         <asp:ListItem Text="Branch" Value="branch"></asp:ListItem>
                     </asp:DropDownList>
 
@@ -78,7 +78,8 @@
                         <%--<button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>--%>
                     </div>
                      <div class="col-xs-6" style="text-align:left;">
-                          <asp:Button ID="bntRegistration" runat="server" class="btn btn-primary btn-block btn-flat" ValidationGroup="l1" Text="Create an Account"  />
+                          <%--<asp:Button ID="bntRegistration" runat="server" class="btn btn-primary btn-block btn-flat" ValidationGroup="l1" Text="Create an Account"  />--%>
+                         <asp:HyperLink ID="hlEdit" NavigateUrl="~/registerbranch.aspx"  runat="server" CssClass="btn btn-primary btn-block btn-flat" Text="Create an Account"></asp:HyperLink>
                        </div>
                      
 

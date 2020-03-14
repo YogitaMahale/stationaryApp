@@ -4,10 +4,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Services;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
+//[System.Web.Script.Services.ScriptService]
 public partial class managebranches : System.Web.UI.Page
 {
     
@@ -64,6 +67,9 @@ public partial class managebranches : System.Web.UI.Page
         {
             HyperLink hlEdit = (HyperLink)e.Item.FindControl("hlEdit");
             hlEdit.NavigateUrl = Page.ResolveUrl("~/addeditbranch.aspx?id=" + ocommon.Encrypt(DataBinder.Eval(e.Item.DataItem, "branchid").ToString(), true));
+
+            CheckBox chkid = (CheckBox)e.Item.FindControl("IsActive");
+            chkid.InputAttributes.Add("data-id", DataBinder.Eval(e.Item.DataItem, "branchid").ToString());
         }
     }
 
@@ -94,6 +100,35 @@ public partial class managebranches : System.Web.UI.Page
         Response.Redirect(Page.ResolveUrl("~/addeditbranch.aspx"));
     }
 
+    //protected void IsActive_CheckedChanged(object sender, EventArgs e)
+    //{
+    //    RepeaterItem item = (sender as CheckBox).Parent as RepeaterItem;
+    //    Int32 BankId = int.Parse((item.FindControl("lblid") as Label).Text);
+    //    bool chkSelected = Convert.ToBoolean((item.FindControl("IsActive") as CheckBox).Checked);
+    //    bool yes = (new Cls_bankmaster_b().IsActive(BankId, chkSelected));
+    //    if (yes)
+    //    {
+    //        BindBank();
+    //        spnMessage.Style.Add("color", "green");
+    //        spnMessage.InnerText = "Bank Updated Successfully";
+    //    }
+    //    else
+    //    {
+    //        spnMessage.Style.Add("color", "red");
+    //        spnMessage.InnerText = "Bank Not Updated";
+    //    }
+    //}
 
+    [WebMethod(EnableSession = true)]
+    //[ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
+    public static bool ToggleIsActive(string id)
+    {
+        bool yes = false;
+        yes = new Cls_branch_b().ToggleIsActive(Convert.ToInt64(id));
+        if (yes)
+            return true;
+        else
+            return false;
 
+    }
 }
