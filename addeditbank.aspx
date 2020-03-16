@@ -8,8 +8,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        <ContentTemplate>
+   
 
             <div class="row">
                 <!-- left column -->
@@ -28,7 +27,24 @@
                                 <asp:TextBox ID="txtbankName" class="form-control" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RFVtxtCategoryName" runat="server" Display="Dynamic" ControlToValidate="txtbankName" CssClass="error" ErrorMessage="*" ValidationGroup="c1"></asp:RequiredFieldValidator>
                             </div>                         
-                         
+                           <div class="form-group">
+                        <label for="exampleInputFile">Logo</label>
+                         <table>
+                            <tr>
+                                <td>
+                                    <asp:FileUpload ID="fpCategory" runat="server"/>
+                                </td>
+                                <td>
+                                    <asp:Image ID="imgCategory" Visible="false" Width="75px" Height="50px" runat="server" />
+                                </td>
+                                <td>&nbsp;&nbsp;&nbsp;<asp:Button ID="btnRemove" runat="server" Visible="false" CssClass="btn btn-danger" Text="X" CausesValidation="false" OnClick="btnRemove_Click" />
+                                    &nbsp;&nbsp;&nbsp;<asp:Button ID="btnImageUpload" runat="server" CssClass="btn btn-info" Text="Upload" OnClick="btnImageUpload_Click" OnClientClick="return checkFileExtension()" />
+                                </td>
+                                <td>&nbsp;&nbsp;&nbsp;
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                         </div>
                         <!-- /.box-body -->
 
@@ -58,8 +74,7 @@
 
                 <!--/.col (right) -->
             </div>
-        </ContentTemplate>
-    </asp:UpdatePanel>
+       
     <!-- jQuery 3 -->
     <script src="Template/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap 3.3.7 -->

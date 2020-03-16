@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 public partial class managebank : System.Web.UI.Page
 {
-     
+    string categoryFrontPath = "~/uploads/banklogo/front/";
     common ocommon = new common();
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -127,7 +127,15 @@ public partial class managebank : System.Web.UI.Page
             
             HyperLink hlEdit = (HyperLink)e.Item.FindControl("hlEdit");
             hlEdit.NavigateUrl = Page.ResolveUrl("~/addeditbank.aspx?id=" + ocommon.Encrypt(DataBinder.Eval(e.Item.DataItem, "id").ToString(), true));
-           
+
+
+
+
+            Image imgCategory = (Image)e.Item.FindControl("imgCategory");
+             
+            imgCategory.ImageUrl = categoryFrontPath + DataBinder.Eval(e.Item.DataItem, "logoimg").ToString();
+
+
         }
     }
 }

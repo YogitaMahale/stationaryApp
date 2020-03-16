@@ -11,9 +11,11 @@ using BusinessLayer;
 using System.Data;
 public partial class addeditbank : System.Web.UI.Page
 {
-  
+    int categoryImageFrontWidth = 500;
+    int categoryImageFrontHeight = 605;
+    string categoryMainPath = "~/uploads/banklogo/";
+    string categoryFrontPath = "~/uploads/banklogo/front/";
     common ocommon = new common();
-
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
@@ -51,7 +53,18 @@ public partial class addeditbank : System.Web.UI.Page
         {
             
             txtbankName.Text = objcategory.bankname;
-         
+            if (!string.IsNullOrEmpty(objcategory.logoimg))
+            {
+                imgCategory.Visible = true;
+                ViewState["fileName"] = objcategory.logoimg ;
+                imgCategory.ImageUrl = categoryFrontPath + objcategory.logoimg;
+                btnImageUpload.Visible = false;
+                btnRemove.Visible = true;
+            }
+            else
+            {
+                btnImageUpload.Visible = true;
+            }
         }
     }
 
@@ -67,7 +80,10 @@ public partial class addeditbank : System.Web.UI.Page
         Int64 Result = 0;
         bankmaster  objcategory = new bankmaster();
         objcategory.bankname = txtbankName.Text.Trim();
-      
+        if (ViewState["fileName"] != null)
+        {
+            objcategory.logoimg  = ViewState["fileName"].ToString();
+        }
         if (Request.QueryString["id"] != null)
         {
             objcategory.id = Convert.ToInt64(ocommon.Decrypt(Request.QueryString["id"].ToString(), true));
@@ -108,4 +124,39 @@ public partial class addeditbank : System.Web.UI.Page
     {
         Response.Redirect(Page.ResolveUrl("~/managebank.aspx"));
     }
+
+
+    protected void btnImageUpload_Click(object sender, EventArgs e)
+    {
+        if (fpCategory.HasFile)
+        {
+            string fileName = Path.GetFileNameWithoutExtension(fpCategory.FileName.Replace(' ', '_')) + DateTime.Now.Ticks.ToString() + Path.GetExtension(fpCategory.FileName);
+            fpCategory.SaveAs(MapPath(categoryMainPath + fileName));
+            ocommon.CreateThumbnail1("uploads\\banklogo\\", categoryImageFrontWidth, categoryImageFrontHeight, "~/Uploads/banklogo/front/", fileName);
+            imgCategory.Visible = true;
+            imgCategory.ImageUrl = categoryFrontPath + fileName;
+            ViewState["fileName"] = fileName;
+            btnRemove.Visible = true;
+            btnImageUpload.Visible = false;
+        }
+    }
+    protected void btnRemove_Click(object sender, EventArgs e)
+    {
+        var filePath = Server.MapPath("~/uploads/banklogo/" + ViewState["fileName"].ToString());
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+        }
+        var filePath1 = Server.MapPath("~/uploads/banklogo/front/" + ViewState["fileName"].ToString());
+        if (File.Exists(filePath1))
+        {
+            File.Delete(filePath1);
+        }
+
+        btnImageUpload.Visible = true;
+        btnRemove.Visible = false;
+        ViewState["fileName"] = string.Empty;
+        imgCategory.Visible = false;
+    }
+
 }

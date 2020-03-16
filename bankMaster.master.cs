@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using BusinessLayer;
 public partial class bankMaster : System.Web.UI.MasterPage
 {
+ 
     protected void Page_Load(object sender, EventArgs e)
     {
+         
+       
         try
         {
 
@@ -29,28 +34,29 @@ public partial class bankMaster : System.Web.UI.MasterPage
                     string dd = Session["type"].ToString();
                 }
             }
+             
 
         }
-        catch (Exception ex) { }
+        catch   { }
         finally { }
 
+        if (!IsPostBack)
+        {
+            Cls_bankmaster_b obj = new Cls_bankmaster_b();
+            Int64 bankid = Convert.ToInt64(Session["bankid"].ToString());
+            bankmaster b = obj.SelectById(bankid);
+            if(b.logoimg=="")
+            {
 
-        //if (Session["usertype"] != null)
-        //{
-        //    //if (Session["usertype"].ToString() == "superadmin" || Session["usertype"].ToString() == "user")
-        //    if (Session["usertype"].ToString() == "1" || Session["usertype"].ToString() == "2" || Session["usertype"].ToString() == "3")
-        //    {
-        //        //divUserAuthority.Visible = true;
-        //    }
-        //    else
-        //    {
-        //        Response.Redirect(Page.ResolveUrl("~/Default.aspx"));
-        //    }
-        //}
-        //else
-        //{
-        //    Response.Redirect(Page.ResolveUrl("~/Default.aspx"));
-        //}
+            }
+            else
+            {
+               // importantImg.Src = Page.ResolveUrl("uploads\\banklogo\\" + b.logoimg + "");
+                Img1.Src = Page.ResolveUrl("uploads\\banklogo\\" + b.logoimg + "");
+            }
+            
+        }
+       
     }
 
     protected void Logout_Click(Object sender, EventArgs e)
