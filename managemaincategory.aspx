@@ -16,13 +16,18 @@
 
                     <div class="box box-success">
                         <div class="box-header">
-                            <div class="text-center">
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 text-right">
                                 <b id="spnMessage" visible="false" runat="server"></b>
-                            </div>
-                            <div class="pull-right">
-                                                                <asp:Button ID="btnNewCategoty" runat="server" Text="New Main Category" class="btn btn-success" OnClick="btnNewCategoty_Click" Width="150" />
 
                             </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 text-right">
+                                                                <asp:Button ID="btnNewCategoty" runat="server" Text="New Main Category" class="btn btn-success" OnClick="btnNewCategoty_Click" />
+
+                            </div>
+
+
+
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">

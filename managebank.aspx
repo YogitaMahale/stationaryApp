@@ -9,24 +9,25 @@
 
             <div class="row">
                 <div class="col-xs-12">
-
                     <!-- /.box -->
-
-
 
                     <div class="box box-success">
                         <div class="box-header">
-                            <div class="text-center">
-                                <b id="spnMessage" visible="false" runat="server"></b>
+                            <div class="col-lg-6 col-md-6 col-sm-6 text-right">
+                                    <b id="spnMessage" visible="false" runat="server"></b>
                             </div>
-                            <div style="text-align: right;">
-                                                                <asp:Button ID="btnNewCategoty" runat="server" Text="New Bank" class="btn btn-success" OnClick="btnNewCategoty_Click" Width="150" />
+                            <div class="col-lg-6 col-md-6 col-sm-6 text-right">
+                                    <asp:Button ID="btnNewCategoty" runat="server" Text="New Bank" class="btn btn-success" OnClick="btnNewCategoty_Click"/>
 
                             </div>
+
+                            
+
+
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            
+
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>

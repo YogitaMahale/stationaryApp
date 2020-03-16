@@ -46,12 +46,12 @@
                     <h3>
                         <asp:Label ID="lbl_farmer" runat="server" Text=""></asp:Label></h3>
 
-                    <p>Farmer Details</p>
+                    <p>Details</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="managefarmers.aspx" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -62,12 +62,12 @@
                     <h3>
                         <asp:Label ID="lbl_Customer" runat="server" Text=""></asp:Label><%--<sup style="font-size: 20px">%</sup>--%></h3>
 
-                    <p>Customer</p>
+                    <p>Details</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="manageCustomerRegistration.aspx" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -78,12 +78,12 @@
                     <h3>
                         <asp:Label ID="lbl_deliveryboy" runat="server" Text=""></asp:Label></h3>
 
-                    <p>Delivery boy Details</p>
+                    <p>Details</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
-                <a href="ManageDeliveryBoy.aspx" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -94,12 +94,12 @@
                     <h3>
                         <asp:Label ID="lbl_productDetails" runat="server" Text=""></asp:Label></h3>
 
-                    <p>Product Details</p>
+                    <p>Details</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>
                 </div>
-                <a href="manageproduct.aspx" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->

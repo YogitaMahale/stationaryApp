@@ -15,13 +15,16 @@
                     <div class="box box-success">
 
                         <div class="box-header">
-                            <div class="text-center">
-                            <b id="spnMessage" visible="false" runat="server"></b>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 text-right">
+                                <b id="spnMessage" visible="false" runat="server"></b>
+
+                            </div>
+
+
                         </div>
-                            
-                        </div>
-                        
-                        
+
+
                         <%--<div style="text-align:right;">
                              <asp:Button ID="btnNeworder" runat="server" Text="New Order" class="btn btn-Normal btn-primary" OnClick="btnNeworder_Click" Width="150" />
                         </div>--%>

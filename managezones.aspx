@@ -12,12 +12,15 @@
                     <!-- /.box -->
                     <div class="box box-primary">
                         <div class="box-header">
-                            <div class="text-center">
-                            <b id="spnMessage" visible="false" runat="server"></b>
-                        </div>
-                            <div style="text-align: right;">
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 text-right">
+                                                        <b id="spnMessage" visible="false" runat="server"></b>
+
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 text-right">
                                 <asp:Button ID="btnNewZone" runat="server" Text="New Zone" class="btn btn-Normal btn-success" OnClick="btnNewZone_Click" />
                             </div>
+
                         </div>
                         
                         

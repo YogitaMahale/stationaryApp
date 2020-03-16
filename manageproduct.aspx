@@ -20,12 +20,13 @@
                             <b id="spnMessage" visible="false" runat="server"></b>
                         </div>--%>
                         <div class="box-header">
-                            <div class="text-center">
-                                <b id="spnMessage" visible="false" runat="server"></b>
-                            </div>
-                            <div class="pull-right">
-                                <asp:Button ID="btnNewCategoty" runat="server" Text="New Product" class="btn btn-success" OnClick="btnNewCategoty_Click" Width="150" />
 
+                            <div class="col-lg-6 col-md-6 col-sm-6 text-right">
+                                <b id="spnMessage" visible="false" runat="server"></b>
+
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 text-right">
+                                <asp:Button ID="btnNewCategoty" runat="server" Text="New Product" class="btn btn-success" OnClick="btnNewCategoty_Click" />
                             </div>
                         </div>
 

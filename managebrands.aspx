@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/superadmin.master" AutoEventWireup="true" CodeFile="managebrands.aspx.cs" Inherits="managebrands" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -11,27 +11,31 @@
                     <!-- /.box -->
                     <div class="box box-primary">
                         <div class="box-header">
-                            <div class="text-center">
-                            <b id="spnMessage" visible="false" runat="server"></b>
-                        </div>
-                            <div style="text-align: right;">
-                                <asp:Button ID="btnNewBrand" runat="server" Text="New Brand" class="btn btn-success" OnClick="btnNewBrand_Click" />
+                            <div class="col-lg-6 col-md-6 col-sm-6 text-right">
+                                <b id="spnMessage" visible="false" runat="server"></b>
+
                             </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 text-right">
+                                <asp:Button ID="btnNewBrand" runat="server" Text="New Brand" class="btn btn-success" OnClick="btnNewBrand_Click" />
+
+                            </div>
+
                         </div>
-                        
-                        
+
+
+
                         <!-- /.box-header -->
                         <div class="box-body">
-                            
+
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        
+
                                         <th style="text-align: center">Category</th>
                                         <th style="text-align: center">Sub Category</th>
                                         <th style="text-align: center">Type</th>
                                         <th style="text-align: center">Brand</th>
-                                        
+
                                         <th style="text-align: center">Action</th>
                                     </tr>
                                 </thead>
@@ -54,7 +58,7 @@
                                                 <td style="text-align: center">
                                                     <asp:Label ID="lblbrandname" runat="server" Text='<%# Eval("brandname") %>'></asp:Label>
                                                 </td>
-                                                
+
                                                 <td style="text-align: center">
                                                     <asp:HyperLink ID="hlEdit" runat="server" class="btn btn-success" Text="EDIT"></asp:HyperLink>&nbsp;
                                         &nbsp;<asp:LinkButton ID="lnkDelete" runat="server" Text="DELETE" class="btn btn-danger" OnClientClick="return confirm('Do you want to delete this record?');" OnClick="lnkDelete_Click"></asp:LinkButton>
@@ -70,7 +74,7 @@
                                         <th style="text-align: center">Sub Category</th>
                                         <th style="text-align: center">Type</th>
                                         <th style="text-align: center">Brand</th>
-                                        
+
                                         <th style="text-align: center">Action</th>
                                     </tr>
                                 </tfoot>

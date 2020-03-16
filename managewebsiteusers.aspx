@@ -15,13 +15,14 @@
 
                 <div class="box box-success">
                     <div class="box-header">
-                        <div class="text-center">
-                            <b id="spnMessage" visible="false" runat="server"></b>
-                        </div>
-                        <div class="pull-right">
-                            <asp:Button ID="btnAddEditUser" runat="server" Text="New User" CssClass="btn btn-success" OnClick="btnAddEditUser_Click" />
 
-                        </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 text-right">
+                            <b id="spnMessage" visible="false" runat="server"></b>
+
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 text-right">
+                            <asp:Button ID="btnAddEditUser" runat="server" Text="New User" CssClass="btn btn-success" OnClick="btnAddEditUser_Click" />
+                            </div>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
