@@ -19,20 +19,20 @@ public partial class managecategory : System.Web.UI.Page
         {
             BindCategory();
             HtmlGenericControl hPageTitle = (HtmlGenericControl)this.Page.Master.FindControl("hPageTitle");
-            hPageTitle.InnerText = "Manage Maincategory";
+            hPageTitle.InnerText = "Manage Main Category";
         }
 
         if (Request.QueryString["mode"] == "u")
         {
             spnMessage.Visible = true;
             spnMessage.Style.Add("color", "green");
-            spnMessage.InnerText = "Maincategory Updated Successfully";
+            spnMessage.InnerText = "Main Category Updated Successfully";
         }
         else if (Request.QueryString["mode"] == "i")
         {
             spnMessage.Visible = true;
             spnMessage.Style.Add("color", "green");
-            spnMessage.InnerText = "Maincategory Inserted Successfully";
+            spnMessage.InnerText = "Main Category Inserted Successfully";
         }
     }
 
@@ -87,18 +87,18 @@ public partial class managecategory : System.Web.UI.Page
             {
                 BindCategory();
                 spnMessage.Style.Add("color", "green");
-                spnMessage.InnerText = "Maincategory Deleted Successfully";
+                spnMessage.InnerText = "Main Category Deleted Successfully";
             }
             else
             {
                 spnMessage.Style.Add("color", "red");
-                spnMessage.InnerText = "Maincategory Not Deleted";
+                spnMessage.InnerText = "Main Category Not Deleted";
             }
         }
         else
         {
             spnMessage.Style.Add("color", "red");
-            spnMessage.InnerText = "In this Maincategory Category added..so you can not delete.";
+            spnMessage.InnerText = "Sub Category is present in this Main Category... So you can not delete.";
         }
 
     }
@@ -113,12 +113,12 @@ public partial class managecategory : System.Web.UI.Page
         {
             BindCategory();
             spnMessage.Style.Add("color", "green");
-            spnMessage.InnerText = "Maincategory Updated Successfully";
+            spnMessage.InnerText = "Main Category Updated Successfully";
         }
         else
         {
             spnMessage.Style.Add("color", "red");
-            spnMessage.InnerText = "Maincategory Not Updated";
+            spnMessage.InnerText = "Main Category Not Updated";
         }
     }
 

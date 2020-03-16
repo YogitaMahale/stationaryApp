@@ -15,7 +15,7 @@
                             <b id="spnMessage" visible="false" runat="server"></b>
                         </div>
                             <div style="text-align: right;">
-                                <asp:Button ID="btnNewBrand" runat="server" Text="New Brand" class="btn btn-Normal btn-success" OnClick="btnNewBrand_Click" />
+                                <asp:Button ID="btnNewBrand" runat="server" Text="New Brand" class="btn btn-success" OnClick="btnNewBrand_Click" />
                             </div>
                         </div>
                         

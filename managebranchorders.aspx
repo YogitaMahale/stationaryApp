@@ -14,9 +14,14 @@
 
                     <div class="box box-success">
 
-                        <div class="text-center">
+                        <div class="box-header">
+                            <div class="text-center">
                             <b id="spnMessage" visible="false" runat="server"></b>
                         </div>
+                            
+                        </div>
+                        
+                        
                         <%--<div style="text-align:right;">
                              <asp:Button ID="btnNeworder" runat="server" Text="New Order" class="btn btn-Normal btn-primary" OnClick="btnNeworder_Click" Width="150" />
                         </div>--%>

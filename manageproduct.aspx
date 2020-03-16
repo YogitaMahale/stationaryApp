@@ -14,10 +14,19 @@
 
 
 
-                    <div class="box">
+                    <div class="box box-success">
 
-                        <div class="text-center">
+                        <%--<div class="text-center">
                             <b id="spnMessage" visible="false" runat="server"></b>
+                        </div>--%>
+                        <div class="box-header">
+                            <div class="text-center">
+                                <b id="spnMessage" visible="false" runat="server"></b>
+                            </div>
+                            <div class="pull-right">
+                                <asp:Button ID="btnNewCategoty" runat="server" Text="New Product" class="btn btn-success" OnClick="btnNewCategoty_Click" Width="150" />
+
+                            </div>
                         </div>
 
                         <div class="box-body">
@@ -35,7 +44,7 @@
                                  
                                 <br />
                                 <asp:Button ID="btnShow" runat="server" Text="Show" class="btn btn-Normal btn-primary" OnClick="btnShow_Click" Width="150" />
-                                <asp:Button ID="btnNewCategoty" runat="server" Text="New Product" class="btn btn-Normal btn-primary" OnClick="btnNewCategoty_Click" Width="150" />
+                                
 
                             </div>
 

@@ -14,13 +14,23 @@
 
 
 
-                    <div class="box">
+                    <div class="box box-success">
 
-                        <div class="text-center">
+                        <%--                        <div class="text-center">
                             <b id="spnMessage" visible="false" runat="server"></b>
                         </div>
                         <div style="text-align:right;">
                              <asp:Button ID="btnNeworder" runat="server" Text="New Order" class="btn btn-Normal btn-primary" OnClick="btnNeworder_Click" Width="150" />
+                        </div>--%>
+
+                        <div class="box-header">
+                            <div class="text-center">
+                                <b id="spnMessage" visible="false" runat="server"></b>
+                            </div>
+                            <div class="pull-right">
+                                <asp:Button ID="btnNeworder" runat="server" Text="New Order" class="btn btn-success" OnClick="btnNeworder_Click" Width="150" />
+
+                            </div>
                         </div>
 
 
@@ -35,7 +45,7 @@
                                         <th style="text-align: center">Branch</th>
                                         <th style="text-align: center">Order Date</th>
                                         <th style="text-align: center">Amount</th>
-                                        
+
                                         <th style="text-align: center">Action</th>
 
                                     </tr>
@@ -58,15 +68,15 @@
                                                 <td style="text-align: center">
                                                     <asp:Label ID="lblOrderDate" runat="server" Text='<%# Eval("orderdate") %>'></asp:Label>
                                                 </td>
-                                                 
+
                                                 <td style="text-align: center">
                                                     <asp:Label ID="lblAmount" runat="server" Text='<%# Eval("totalamount") %>'></asp:Label>
                                                 </td>
-                                                
+
                                                 <td style="text-align: center">
-                                                    
-                                     <asp:HyperLink ID="hlEdit"  runat="server" CssClass="btn btn-sm btn-success" Text="Edit"></asp:HyperLink>&nbsp;
-                                                     <asp:HyperLink ID="hlinvoice"  runat="server" CssClass="btn btn-sm btn-warning" Text="Invoice" Target="_blank"></asp:HyperLink>&nbsp;
+
+                                                    <asp:HyperLink ID="hlEdit" runat="server" CssClass="btn btn-sm btn-success" Text="Edit"></asp:HyperLink>&nbsp;
+                                                     <asp:HyperLink ID="hlinvoice" runat="server" CssClass="btn btn-sm btn-warning" Text="Invoice" Target="_blank"></asp:HyperLink>&nbsp;
                                                 
                                                 </td>
                                             </tr>
@@ -81,7 +91,7 @@
                                         <th style="text-align: center">Branch</th>
                                         <th style="text-align: center">Order Date</th>
                                         <th style="text-align: center">Amount</th>
-                                        
+
                                         <th style="text-align: center">Action</th>
                                     </tr>
                                 </tfoot>

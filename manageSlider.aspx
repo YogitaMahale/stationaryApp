@@ -14,20 +14,25 @@
 
 
                    
-                    <div class="box">
-                        <br />
+                    <div class="box box-success">
+                        <%--<br />
                          <div class="text-center">
                         <b id="spnMessage" visible="false" runat="server"></b>
                     </div>
-                        <br />
+                        <br />--%>
+                        <div class="box-header">
+                            <div class="text-center">
+                                <b id="spnMessage" visible="false" runat="server"></b>
+                            </div>
+                            <div class="pull-right">
+                                                                                                <asp:Button ID="btnNewCategoty" runat="server" Text="Add New" class="btn btn-success" OnClick="btnNewCategoty_Click" Width="150" />
+
+
+                            </div>
+                        </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <br />
                             
-                            <div style="text-align:right;">
-                                <asp:Button ID="btnNewCategoty" runat="server" Text="Add New" class="btn btn-Normal btn-primary" OnClick="btnNewCategoty_Click" Width="150" />
-                            </div>
-                            <br />
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>

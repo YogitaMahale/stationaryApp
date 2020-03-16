@@ -40,12 +40,12 @@
 }
 
 .centered-form .panel{
-	background: rgba(255, 255, 255, 0.8);
+	/*background: rgba(255, 255, 255, 0.8);*/
 	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
 }
     </style>
 </head>
-<body style="background-color: #525252;">
+<body style="background-color: #ff006e;">
     <%--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />--%>
 
     <!-- Bootstrap 3.3.7 -->
