@@ -41,7 +41,7 @@
                         StopButtonText="Stop"
                         Loop="true">
                     </cc1:SlideShowExtender>
-                    <div class="col-md-12" style="text-align: center;">
+                    <div class="col-md-12" style="text-align: center; display:none;">
                         <asp:Label ID="lblDesc" runat="server" Text=""></asp:Label><br />
                         <asp:Button ID="btnPrev" runat="server" Text="Previous" />
                         <asp:Button ID="btnPlay" runat="server" Text="" />

@@ -135,8 +135,8 @@ namespace BusinessLayer
         private String _bankname;        
         private Boolean _isactive;
         private Boolean _isdelete;
-         
-       
+        private string _logoimg;
+
 
 
         #endregion
@@ -164,8 +164,12 @@ namespace BusinessLayer
             get { return _isdelete; }
             set { _isdelete = value; }
         }
+        public string logoimg
+        {
+            get { return _logoimg; }
+            set { _logoimg = value; }
+        }
 
-     
         #endregion
     }
 

@@ -34,6 +34,7 @@
                                         <th style="text-align: center">SR No.</th>
                                         <th style="text-align: center">Name</th>
                                         <th style="text-align: center">Is Active</th>
+                                        <th style="text-align:center;">Image</th>
                                         <th style="text-align: center">Action</th>
                                     </tr>
                                 </thead>
@@ -54,6 +55,9 @@
 
                                                 <td style="text-align: center">
                                                     <asp:CheckBox ID="IsActive" runat="server" AutoPostBack="true" Checked='<%# Eval("isactive") %>' OnCheckedChanged="IsActive_CheckedChanged" />
+                                                </td>
+                                                 <td style="text-align: center">
+                                                    <asp:Image ID="imgCategory" Width="75px" Height="50px" runat="server"></asp:Image>
                                                 </td>
                                                 <td style="text-align: center">
                                                     <asp:HyperLink ID="hlEdit" runat="server" Style="text-decoration: underline" class="btn btn-success" Text="Edit"></asp:HyperLink>&nbsp;

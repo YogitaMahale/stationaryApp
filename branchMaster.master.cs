@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -35,8 +36,24 @@ public partial class branchMaster : System.Web.UI.MasterPage
 
             }
         }
-        catch (Exception ex) { }
+        catch   { }
         finally { }
+        if (!IsPostBack)
+        {
+            Cls_bankmaster_b obj = new Cls_bankmaster_b();
+            Int64 bankid = Convert.ToInt64(Session["bankid"].ToString());
+            bankmaster b = obj.SelectById(bankid);
+            if (b.logoimg == "")
+            {
+
+            }
+            else
+            {
+              //  importantImg.Src = Page.ResolveUrl("uploads\\banklogo\\" + b.logoimg + "");
+                Img1.Src = Page.ResolveUrl("uploads\\banklogo\\" + b.logoimg + "");
+            }
+
+        }
     }
     protected void Logout_Click(Object sender, EventArgs e)
     {

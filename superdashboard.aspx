@@ -3,43 +3,14 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <%-- <style>
-        .headerstyle {
-            background-color: #00AAAC;
-        }
-
-        .headerstyle1 {
-            background-color: #F2C81D;
-        }
-
-        .headerstyle2 {
-            background-color: #01E677;
-        }
-
-        .headerstyle3 {
-            background-color: #5E8FF9;
-        }
-        #areachartMorya{
-  min-height: 250px;
-}
-    </style>--%>
-
-    <%--<script type="text/javascript">
-        function dateselect(ev) {
-            var calendarBehavior1 = $find("Calendar1");
-            var d = calendarBehavior1._selectedDate;
-            var now = new Date();
-            calendarBehavior1.get_element().value = d.format("yyyy-MM-dd")
-            //calendarBehavior1.get_element().value = d.format("yyyy/MM/dd") + " " + now.format("HH:mm:ss")
-        }
-    </script>--%>
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>--%>
     <!-- Small boxes (Stat box) -->
     <div class="row">
-        <div class="col-lg-3 col-xs-6">
+     <%--   <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-aqua">
                 <div class="inner">
@@ -53,14 +24,14 @@
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
-        </div>
+        </div>--%>
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+      <%--  <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-green">
                 <div class="inner">
                     <h3>
-                        <asp:Label ID="lbl_Customer" runat="server" Text=""></asp:Label><%--<sup style="font-size: 20px">%</sup>--%></h3>
+                        <asp:Label ID="lbl_Customer" runat="server" Text=""></asp:Label></h3>
 
                     <p>Details</p>
                 </div>
@@ -69,9 +40,9 @@
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
-        </div>
+        </div>--%>
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+      <%--  <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
@@ -85,9 +56,9 @@
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
-        </div>
+        </div>--%>
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+       <%-- <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-red">
                 <div class="inner">
@@ -101,7 +72,7 @@
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
-        </div>
+        </div>--%>
         <!-- ./col -->
     </div>
     <!-- /.row -->
@@ -224,102 +195,16 @@
                 <div class="box-body border-radius-none">
                     <div class="chart" id="line-chart" style="height: 250px;"></div>
                 </div>
-                <!-- /.box-body -->
-                <%--<div class="box-footer no-border">
-                    <div class="row">
-                        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                            <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60"
-                                data-fgcolor="#39CCCC" />
-
-                            <div class="knob-label">Mail-Orders</div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                            <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60"
-                                data-fgcolor="#39CCCC" />
-
-                            <div class="knob-label">Online</div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-xs-4 text-center">
-                            <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60"
-                                data-fgcolor="#39CCCC" />
-
-                            <div class="knob-label">In-Store</div>
-                        </div>
-                        <!-- ./col -->
-                    </div>
-                    <!-- /.row -->
-                </div>--%>
-                <!-- /.box-footer -->
+              
             </div>
-            <!-- /.box -->
-            <!-- /.box -->
-
+          
 
 
         </section>
 
-        <!--/.Left col -->
-
-        <!-- Left col -->
-
-       <%-- <section class="col-lg-12 connectedSortable">
-            <div class="box box-info">
-                <div class="box-header">
-
-                    <i class="fa fa-area-chart"></i>
-                    <h3 class="box-title">Morya Followup</h3>
-                    <!-- tools box -->
-
-                    <!-- /. tools -->
-                </div>
-                <div class="box-body">
-                    <div class="form-group row">
-
-
-                        <div class="col-xs-3">
-                            <asp:TextBox ID="txt_fromDate1" runat="server" class="form-control" autocomplete="off" AutoPostBack="true" ReadOnly="false" placeholder="FROM" OnTextChanged="txt_fromDate1_TextChanged"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Enter Date" ControlToValidate="txt_fromDate1" ValidationGroup="gg" ForeColor="Red"></asp:RequiredFieldValidator>
-                            <cc1:CalendarExtender ID="CalendarExtender2" PopupButtonID="imgPopup" runat="server" TargetControlID="txt_fromDate1" Format="dd/MM/yyyy"></cc1:CalendarExtender>
-                        </div>
-                        <div class="col-xs-3">
-                            <asp:TextBox ID="txt_toDate1" runat="server" class="form-control" autocomplete="off" ReadOnly="false" AutoPostBack="true" placeholder="TO" OnTextChanged="txt_fromDate1_TextChanged"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Enter Date" ControlToValidate="txt_toDate1" ValidationGroup="gg" ForeColor="Red"></asp:RequiredFieldValidator>
-                            <cc1:CalendarExtender ID="CalendarExtender4" PopupButtonID="imgPopup" runat="server" TargetControlID="txt_toDate1" Format="dd/MM/yyyy"></cc1:CalendarExtender>
-                        </div>
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-
-
-
-
-                    <div id="areaChartMorya"></div>
-                </div>
-                <div class="box-footer clearfix"></div>
-            </div>
-
-
-
-
-        </section>--%>
-        <!--/.Left col -->
-
+      
     </div>
-    <!-- Main row -->
-
-    <!-- /.row (main row) -->
-
-
-    <%--</ContentTemplate>
-    </asp:UpdatePanel>--%>
-
-
-
-
+  
 
 
 

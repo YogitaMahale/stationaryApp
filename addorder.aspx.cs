@@ -336,10 +336,11 @@ public partial class addorder : System.Web.UI.Page
         string oSB = string.Empty;
         bool send = false;
         MailMessage mail = new MailMessage();
-        mail.To.Add("all4stationery@gmail.com");
+        //mail.To.Add("all4stationery@gmail.com");
 
-        //mail.To.Add("accounts@all-stationery.com");
-       
+        mail.CC.Add("technologiesvsys@gmail.com");
+        mail.CC.Add("ezacus@gmail.com");
+        mail.CC.Add("yogesh.m@gmail.com");
         //mail.CC.Add("ploutos.acc@gmail.com");
         //mail.To.Add("ploutos.kiran@gmail.com");
         if (ZonalmgrMail.ToString().Trim() == "".Trim())

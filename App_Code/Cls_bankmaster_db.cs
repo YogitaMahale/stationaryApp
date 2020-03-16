@@ -83,7 +83,8 @@ namespace DatabaseLayer
                                 {
                                     objbankmaster.id = Convert.ToInt32(ds.Tables[0].Rows[0]["id"]);
                                     objbankmaster.bankname = Convert.ToString(ds.Tables[0].Rows[0]["bankname"]);
-                                    
+                                    objbankmaster.logoimg  = Convert.ToString(ds.Tables[0].Rows[0]["logoimg"]);
+
                                 }
                             }
                         }
@@ -119,9 +120,7 @@ namespace DatabaseLayer
                 param.Direction = ParameterDirection.InputOutput;
                 cmd.Parameters.Add(param);
                 cmd.Parameters.AddWithValue("@bankname", objbankmaster.bankname);
-              
-
-
+                cmd.Parameters.AddWithValue("@logoimg", objbankmaster.logoimg );
                 ConnectionString.Open();
                 cmd.ExecuteNonQuery();
                 result = Convert.ToInt64(param.Value);
@@ -156,7 +155,7 @@ namespace DatabaseLayer
                 param.Direction = ParameterDirection.InputOutput;
                 cmd.Parameters.Add(param);
                 cmd.Parameters.AddWithValue("@bankname", objbankmaster.bankname);
-               
+                cmd.Parameters.AddWithValue("@logoimg", objbankmaster.logoimg);
                 ConnectionString.Open();
                 cmd.ExecuteNonQuery();
                 result = Convert.ToInt64(param.Value);
