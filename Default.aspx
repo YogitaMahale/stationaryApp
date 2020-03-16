@@ -49,14 +49,14 @@
                 <div class="form-group has-feedback">
 
                     <asp:TextBox ID="txtUserName" CssClass="form-control" MaxLength="50" runat="server" placeholder="User Name"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RFVtxtUserName" CssClass="fbold" runat="server" Display="Dynamic" ControlToValidate="txtUserName" ErrorMessage="Required Field" ValidationGroup="l1"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RFVtxtUserName" CssClass="fbold" runat="server" Display="Dynamic" ControlToValidate="txtUserName" ErrorMessage="*" ValidationGroup="l1" Font-Bold="True" ForeColor="#CC0000" Font-Size="Large"></asp:RequiredFieldValidator>
 
                     <%-- <input type="email" class="form-control" placeholder="Email">--%>
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
                     <asp:TextBox ID="txtPassword" TextMode="Password" runat="server" CssClass="form-control" placeholder="Password"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RFVtxtPassword" CssClass="fbold" runat="server" Display="Dynamic" ControlToValidate="txtPassword" ErrorMessage="Required Field" ValidationGroup="l1"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RFVtxtPassword" CssClass="fbold" runat="server" Display="Dynamic" ControlToValidate="txtPassword" ErrorMessage="*" ValidationGroup="l1" Font-Bold="True" Font-Size="Large" ForeColor="#CC0000"></asp:RequiredFieldValidator>
                     <%--<input type="password" class="form-control" placeholder="Password">--%>
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>

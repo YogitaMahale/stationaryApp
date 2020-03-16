@@ -21,6 +21,7 @@
                         <div class="col-lg-4">
                             <label for="exampleInputEmail1">New Password </label>
                             <asp:TextBox ID="txtPassword" runat="server" class="form-control" placeholder="Password" TextMode="Password"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*"  ValidationGroup="gg" ControlToValidate="txtPassword" Font-Bold="True" Font-Size="Large" ForeColor="#CC0000"></asp:RequiredFieldValidator>
                         </div>
 
                     </div>
@@ -28,8 +29,10 @@
                         <div class="col-lg-4">
                             <label for="exampleInputEmail1">Confirm Password </label>
                             <asp:TextBox ID="txtConfirmPassword" runat="server" CssClass="form-control" placeholder="Confirm Password" TextMode="Password"></asp:TextBox>
+                              <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*"  ValidationGroup="gg" ControlToValidate="txtConfirmPassword" Font-Bold="True" Font-Size="Large" ForeColor="#CC0000"></asp:RequiredFieldValidator> 
+                       
                             <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Password and Confirm Password do not match." ControlToCompare="txtPassword" ControlToValidate="txtConfirmPassword" ValidationGroup="gg" ForeColor="#CC0000"></asp:CompareValidator>
-                        </div>
+                          </div>
                     </div>
                 </div>
                 <!-- /.box-body -->
