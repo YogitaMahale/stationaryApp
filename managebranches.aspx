@@ -10,13 +10,13 @@
                 <div class="col-xs-12">
 
                     <!-- /.box -->
-                    <div class="box box-primary">
+                    <div class="box box-success">
                         <div class="box-header">
                             <div class="text-center">
                                 <b id="spnMessage" visible="false" runat="server"></b>
                             </div>
                             <div style="text-align: right;">
-                                <asp:Button ID="btnNewBranch" runat="server" Text="New Branch" class="btn btn-Normal btn-success" OnClick="btnNewBranch_Click" />
+                                <asp:Button ID="btnNewBranch" runat="server" Text="New Branch" class="btn btn-success" OnClick="btnNewBranch_Click" />
                             </div>
                         </div>
 

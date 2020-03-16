@@ -45,7 +45,7 @@
 }
     </style>
 </head>
-<body style="background-color: #525252;">
+<body style="background-color: #ff006e;">
     <%--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />--%>
 
     <!-- Bootstrap 3.3.7 -->

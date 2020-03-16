@@ -15,11 +15,21 @@
 
 
                     <div class="box">
-                        <br />
+                        <%--<br />
                         <div class="text-center">
                             <b id="spnMessage" visible="false" runat="server"></b>
                         </div>
-                        <br />
+                        <br />--%>
+                        <div class="box-header">
+                            <div class="text-center">
+                                <b id="spnMessage" visible="false" runat="server"></b>
+                            </div>
+                            <div class="pull-right">
+                                                                <asp:Button ID="btnNewCategoty" runat="server" Text="New Sub Category" class="btn btn-success" OnClick="btnNewCategoty_Click" Width="150" />
+
+
+                            </div>
+                        </div>
                         <div class="box-body">
                             <label for="exampleInputEmail1">Select Maincategory </label>
                             <asp:DropDownList ID="ddlmaincategory" Class="form-control" Width="500px" AutoPostBack="true" OnSelectedIndexChanged="ddlmaincategory_SelectedIndexChanged" runat="server"></asp:DropDownList>
@@ -29,12 +39,7 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <br />
-
-                            <div style="text-align: right;">
-                                <asp:Button ID="btnNewCategoty" runat="server" Text="New SubCategory" class="btn btn-Normal btn-primary" OnClick="btnNewCategoty_Click" Width="150" />
-                            </div>
-                            <br />
+                            
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>

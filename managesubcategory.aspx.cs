@@ -39,20 +39,20 @@ public partial class managesubcategory : System.Web.UI.Page
             BindMaincategory();
           //  BindCategory();
             HtmlGenericControl hPageTitle = (HtmlGenericControl)this.Page.Master.FindControl("hPageTitle");
-            hPageTitle.InnerText = "Manage Subcategory";
+            hPageTitle.InnerText = "Manage Sub Category";
         }
 
         if (Request.QueryString["mode"] == "u")
         {
             spnMessage.Visible = true;
             spnMessage.Style.Add("color", "green");
-            spnMessage.InnerText = "Subcategory Updated Successfully";
+            spnMessage.InnerText = "Sub Category Updated Successfully";
         }
         else if (Request.QueryString["mode"] == "i")
         {
             spnMessage.Visible = true;
             spnMessage.Style.Add("color", "green");
-            spnMessage.InnerText = "Subcategory Inserted Successfully";
+            spnMessage.InnerText = "Sub Category Inserted Successfully";
         }
     }
 
@@ -107,12 +107,12 @@ public partial class managesubcategory : System.Web.UI.Page
             {
                 BindCategory(Convert.ToInt64(ddlmaincategory.SelectedValue.ToString()));
                 spnMessage.Style.Add("color", "green");
-                spnMessage.InnerText = "Subcategory Deleted Successfully";
+                spnMessage.InnerText = "Sub Category Deleted Successfully";
             }
             else
             {
                 spnMessage.Style.Add("color", "red");
-                spnMessage.InnerText = "Subcategory Not Deleted";
+                spnMessage.InnerText = "Sub Category Not Deleted";
             }
         //}
         //else
@@ -134,12 +134,12 @@ public partial class managesubcategory : System.Web.UI.Page
         {
             BindCategory(Convert.ToInt64(ddlmaincategory.SelectedValue.ToString()));
             spnMessage.Style.Add("color", "green");
-            spnMessage.InnerText = "Subcategory Updated Successfully";
+            spnMessage.InnerText = "Sub Category Updated Successfully";
         }
         else
         {
             spnMessage.Style.Add("color", "red");
-            spnMessage.InnerText = "Subcategory Not Updated";
+            spnMessage.InnerText = "Sub Category Not Updated";
         }
     }
 

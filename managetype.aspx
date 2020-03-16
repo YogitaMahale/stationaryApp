@@ -14,16 +14,24 @@
 
 
 
-                    <div class="box">
-                        
-                        <div class="text-center">
-                            <b id="spnMessage" visible="false" runat="server"></b>
+                    <div class="box box-success">
+
+
+                        <div class="box-header">
+                            <div class="text-center">
+                                <b id="spnMessage" visible="false" runat="server"></b>
+                            </div>
+                            <div class="pull-right">
+                                <asp:Button ID="btnNewCategoty" runat="server" Text="New Type" class="btn btn-success" OnClick="btnNewCategoty_Click" Width="150" />
+
+
+                            </div>
                         </div>
-                        
+
                         <div class="box-body">
                             <div class="col-xs-4">
                                 <label for="exampleInputEmail1">Select Maincategory </label>
-                                <asp:DropDownList ID="ddlmaincategory" Class="form-control"  AutoPostBack="true" OnSelectedIndexChanged="ddlmaincategory_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                                <asp:DropDownList ID="ddlmaincategory" Class="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlmaincategory_SelectedIndexChanged" runat="server"></asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RFVddlCategory" runat="server" InitialValue="0" Display="Dynamic" ControlToValidate="ddlmaincategory" CssClass="error" ErrorMessage="*" ValidationGroup="p1"></asp:RequiredFieldValidator>
                             </div>
                             <div class="col-xs-4">
@@ -31,13 +39,10 @@
                                 <asp:DropDownList ID="ddlsubcategory" Class="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlsubcategory_SelectedIndexChanged" runat="server"></asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" InitialValue="0" Display="Dynamic" ControlToValidate="ddlsubcategory" CssClass="error" ErrorMessage="*" ValidationGroup="p1"></asp:RequiredFieldValidator>
                             </div>
-                            <div class="col-xs-4" style ="text-align:right;">
-                                <br />
-                                 <asp:Button ID="btnNewCategoty" runat="server" Text="New Type" class="btn btn-Normal btn-primary" OnClick="btnNewCategoty_Click" Width="150" />
-                            </div>
+
 
                         </div>
-                        
+
                         <!-- /.box-header -->
                         <div class="box-body">
                             <br />
