@@ -70,7 +70,7 @@
                                                 </td>
 
                                                 <td style="text-align: center">
-
+                                                    <asp:Button ID="btnApprove" runat="server" CssClass="btn btn-sm btn-success" data-id='<%# Eval("oid") %>' Text="Approve" OnClick="btnApprove_Click" />
                                                     <asp:HyperLink ID="hlinvoice" runat="server" CssClass="btn btn-sm btn-warning" Text="Invoice" Target="_blank"></asp:HyperLink>&nbsp;&nbsp; 
                                      <asp:HyperLink ID="hlEdit" Visible="false" runat="server" CssClass="btn btn-sm btn-success" Text="Edit"></asp:HyperLink>&nbsp;
                             &nbsp;<asp:LinkButton ID="lnkTodayDelete" Visible="false" runat="server" Text="Delete" CommandArgument='<%# Eval("oid") %>' CssClass="btn btn-sm btn-danger" OnClientClick="return confirm('Do you want to delete this order?');" OnClick="lnkDelete_Click"></asp:LinkButton>

@@ -135,8 +135,8 @@
                 <!-- /.box-body -->
 
                 <div class="box-footer" style="text-align: center">
-                    <asp:Button ID="btnSave" runat="server" CausesValidation="true" ValidationGroup="p1" Text="Save" class="btn btn-info btn-lg" OnClick="btnSave_Click" />&nbsp;&nbsp;
-                    <asp:Button ID="btnCancel" runat="server" CausesValidation="false" class="btn btn-danger  btn-lg" Text="Cancel" OnClick="btnCancel_Click" />
+                    <asp:Button ID="btnSave" runat="server" CausesValidation="true" ValidationGroup="p1" Text="Save" class="btn btn-info" OnClick="btnSave_Click" />&nbsp;&nbsp;
+                    <asp:Button ID="btnCancel" runat="server" CausesValidation="false" class="btn btn-danger" Text="Cancel" OnClick="btnCancel_Click" />
 
 
                 </div>
