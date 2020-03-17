@@ -20,13 +20,13 @@ public partial class bankMaster : System.Web.UI.MasterPage
             //if (Session["type"].ToString().ToLower().Trim() != "Bank".ToLower().Trim() || Session["userid"] == null || Session["username"] == null || Session["type"] == null || Session["bid"] == null)
             if (Session["userid"] == null || Session["username"] == null || Session["type"] == null || Session["bid"] == null)
             {
-                Response.Redirect(Page.ResolveUrl("~/Default.aspx"));
+                Response.Redirect(Page.ResolveUrl("~/Login.aspx"));
             }
             else
             {
                 if (Session["type"].ToString().ToLower().Trim() != "Bank".ToLower().Trim())
                 {
-                    Response.Redirect(Page.ResolveUrl("~/Default.aspx"));
+                    Response.Redirect(Page.ResolveUrl("~/Login.aspx"));
                 }
                 else
                 {
@@ -65,7 +65,7 @@ public partial class bankMaster : System.Web.UI.MasterPage
         Session["username"] = null;
         Session["type"] = null;
         Session["bid"] = null;
-        Response.Redirect(Page.ResolveUrl("~/Default.aspx?logout=yes"));
+        Response.Redirect(Page.ResolveUrl("~/Login.aspx?logout=yes"));
 
     }
 }

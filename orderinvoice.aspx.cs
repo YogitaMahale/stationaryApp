@@ -15,14 +15,14 @@ public partial class orderinvoice : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            if (Session["userid"] == null || Session["username"] == null || Session["type"] == null || Session["bid"] == null)
-            {
-                Response.Redirect(Page.ResolveUrl("~/Default.aspx"));
-            }
-            else { 
+            //if (Session["userid"] == null || Session["username"] == null || Session["type"] == null || Session["bid"] == null)
+            //{
+            //    Response.Redirect(Page.ResolveUrl("~/Default.aspx"));
+            //}
+            //else { 
             Int64 id = Convert.ToInt64(ocommon.Decrypt(Request.QueryString["id"].ToString(), true));
             BindOrderDetails(Convert.ToInt64(ocommon.Decrypt(Request.QueryString["id"].ToString(), true)));
-            }
+          //  }
         }
     }
 

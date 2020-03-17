@@ -362,6 +362,14 @@
                             </span>--%>
                         </a>
                     </li>
+                     <li>
+                        <a href="manageOrder1.aspx?Mode=Bank">
+                            <i class="fa fa-th"></i><span>Order</span>
+                            <%--<span class="pull-right-container">
+                                <small class="label pull-right bg-green">new</small>
+                            </span>--%>
+                        </a>
+                    </li>
                     <li>
                         <a href="#" onserverclick="Logout_Click" runat="server">
                             <i class="fa fa-th"></i><span>Logout</span>
