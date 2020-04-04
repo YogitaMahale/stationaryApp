@@ -18,10 +18,10 @@
                             
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 text-right">
-                                <asp:Button ID="btnNewBranch" runat="server" Text="New Branch" class="btn btn-success" OnClick="btnNewBranch_Click" />
+                                <asp:Button ID="btnNewBranch" runat="server" Text="New Branch" Visible="false" class="btn btn-success" OnClick="btnNewBranch_Click" />
                                     
                             </div>
-
+</div>
 
                         <!-- /.box-header -->
                         <div class="box-body">
