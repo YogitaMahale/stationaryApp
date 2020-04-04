@@ -21,9 +21,11 @@ public partial class websitemaster : System.Web.UI.MasterPage
             {
                 lblLoginusername.InnerText = "HELLO! " + Session["WebsiteLogincustomerName"].ToString();
                 lblcustomerprofile.Visible = true;
+                lblloginbtn.Visible = false;
             }
             else
             {
+                lblloginbtn.Visible = true ;
                 lblLoginusername.InnerText = "";
                 lblcustomerprofile.Visible = false ;
             }

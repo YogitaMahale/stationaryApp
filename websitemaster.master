@@ -202,8 +202,8 @@
                                 <li><a href="about.aspx">About</a> </li>
                                 <li><a href="Privacy.aspx">PrivacyandPolicy</a> </li>
                                 <li><a href="Termandcondition.aspx">TermsandCondition</a> </li>
-                                <li><a href="customerlogin.aspx">Login</a> </li>
-                                <li><a href="managesocialpage.aspx">Social Info</a> </li>
+                                <li><a href="customerlogin.aspx" runat="server" id="lblloginbtn" >Login</a> </li>
+                              <%--  <li><a href="managesocialpage.aspx">Social Info</a> </li>--%>
                             </ul>
                         </div>
 
