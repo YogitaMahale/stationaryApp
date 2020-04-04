@@ -36,12 +36,13 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th style="text-align: center">ID</th>
+                                        <th style="text-align: center">Invoie No.</th>
                                         <th style="text-align: center">Bank</th>
                                         <th style="text-align: center">Branch</th>
                                         <th style="text-align: center">Order Date</th>
                                         <th style="text-align: center">Amount</th>
                                         <th style="text-align: center">POD No.</th>
+                                         <th style="text-align: center">Order Status</th>
                                         <th style="text-align: center">Action</th>
 
                                     </tr>
@@ -52,7 +53,8 @@
                                         <ItemTemplate>
                                             <tr>
                                                 <td style="text-align: center">
-                                                    <asp:Label ID="lbloid1" runat="server" Text='<%# Eval("oid") %>'></asp:Label>
+                                                    <asp:Label ID="lbloid1" Visible="false"  runat="server" Text='<%# Eval("oid") %>'></asp:Label>
+                                                      <asp:Label ID="Label2" runat="server" Text='<%# Eval("orderno") %>'></asp:Label>
                                                 </td>
                                                 <td style="text-align: center">
                                                     <asp:Label ID="lblBranch" runat="server" Text='<%# Eval("bankname") %>'></asp:Label>
@@ -70,6 +72,9 @@
                                                 </td>
                                                 <td style="text-align: center">
                                                     <asp:TextBox ID="txtpodNo" runat="server" Text='<%# Eval("podno") %>'></asp:TextBox>
+                                                </td>
+                                                 <td style="text-align: center">
+                                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("isapproved") %>'></asp:Label>
                                                 </td>
                                                 <td style="text-align: center">
                                                     <asp:LinkButton ID="lnkInvoice" runat="server" Text="Invoice" OnClick="lnkInvoice_Click"  OnClientClick = "SetTarget();" class="btn btn-success"></asp:LinkButton>

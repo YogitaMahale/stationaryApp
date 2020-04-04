@@ -39,6 +39,6 @@ public partial class Logout : System.Web.UI.Page
         catch { }
         finally { }
 
-        Response.Redirect(Page.ResolveUrl("~/Default.aspx?logout=yes"));
+        Response.Redirect(Page.ResolveUrl("~/superadminlogin.aspx?logout=yes"));
     }
 }

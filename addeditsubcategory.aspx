@@ -21,7 +21,7 @@
 
                 <div class="box-body">
                      <div class="form-group">
-                        <label for="exampleInputEmail1">Select Maincategory </label>
+                        <label for="exampleInputEmail1">Select Main Category </label>
                         <asp:DropDownList ID="ddlmaincategory" Class="form-control" Width="500px" runat="server"></asp:DropDownList>
 
                         <asp:RequiredFieldValidator ID="RFVddlCategory" runat="server" InitialValue="0" Display="Dynamic" ControlToValidate="ddlmaincategory" CssClass="error" ErrorMessage="Required Field" ValidationGroup="p1"></asp:RequiredFieldValidator>

@@ -1,0 +1,110 @@
+﻿using BusinessLayer;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+
+public partial class manageWebsiteSlider : System.Web.UI.Page
+{
+    string categoryFrontPath = "~/uploads/websiteslider/front/";
+    common ocommon = new common();
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!Page.IsPostBack)
+        {
+            Bindslider();
+            HtmlGenericControl hPageTitle = (HtmlGenericControl)this.Page.Master.FindControl("hPageTitle");
+            hPageTitle.InnerText = "Manage Website Slider";
+        }
+
+        if (Request.QueryString["mode"] == "u")
+        {
+            spnMessage.Visible = true;
+            spnMessage.Style.Add("color", "green");
+            spnMessage.InnerText = "Slider Updated Successfully";
+        }
+        else if (Request.QueryString["mode"] == "i")
+        {
+            spnMessage.Visible = true;
+            spnMessage.Style.Add("color", "green");
+            spnMessage.InnerText = "Slider Inserted Successfully";
+        }
+    }
+
+    private void Bindslider()
+    {
+        DataTable dtCategory = (new cls_websiteslider_b().SelectAll());
+        if (dtCategory != null)
+        {
+            if (dtCategory.Rows.Count > 0)
+            {
+                repslider.DataSource = dtCategory;
+                repslider.DataBind();
+            }
+            else
+            {
+                repslider.DataSource = null;
+                repslider.DataBind();
+            }
+        }
+        else
+        {
+            repslider.DataSource = null;
+            repslider.DataBind();
+        }
+    }
+
+    protected void repCategory_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        if ((e.Item.ItemType == ListItemType.Item) || (e.Item.ItemType == ListItemType.AlternatingItem))
+        {
+
+            HyperLink hlEdit = (HyperLink)e.Item.FindControl("hlEdit");
+            hlEdit.NavigateUrl = Page.ResolveUrl("~/addeditWebsiteSlider.aspx?id=" + ocommon.Encrypt(DataBinder.Eval(e.Item.DataItem, "id").ToString(), true));
+
+
+            Image imgCategory = (Image)e.Item.FindControl("imgCategory");
+
+            imgCategory.ImageUrl = categoryFrontPath + DataBinder.Eval(e.Item.DataItem, "imagename").ToString();
+
+        }
+    }
+
+
+    protected void lnkDelete_Click(object sender, EventArgs e)
+    {
+        RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
+
+        Int64 CategoryId = int.Parse((item.FindControl("lblCategoryId") as Label).Text);
+        bool yes = (new cls_websiteslider_b().Delete(CategoryId));
+
+        if (yes)
+        {
+            Bindslider();
+            spnMessage.Style.Add("color", "green");
+            spnMessage.InnerText = "Slider Deleted Successfully";
+        }
+        else
+        {
+            spnMessage.Style.Add("color", "red");
+            spnMessage.InnerText = "Slider Not Deleted";
+        }
+
+
+    }
+
+
+
+    protected void btnNewCategoty_Click(object sender, EventArgs e)
+    {
+        Response.Redirect(Page.ResolveUrl("~/addeditWebsiteSlider.aspx"));
+    }
+
+
+
+}

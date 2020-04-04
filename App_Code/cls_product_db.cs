@@ -28,7 +28,58 @@ namespace DatabaseLayer
             ConnectionString.ConnectionString = ConfigurationManager.ConnectionStrings[conname].ConnectionString;
         }
         #region Public Methods
-
+        public DataSet newArrivalSelectAll()
+        {
+            DataSet ds = new DataSet();
+            SqlDataAdapter da;
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "productmaster_newArrival";
+                cmd.CommandType = CommandType.StoredProcedure;
+                
+                cmd.Connection = ConnectionString;
+                ConnectionString.Open();
+                da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+                ErrHandler.writeError(ex.Message, ex.StackTrace);
+                return null;
+            }
+            finally
+            {
+                ConnectionString.Close();
+            }
+            return ds;
+        }
+        public DataSet websiteproductdetails_SelectById(Int64 productid)
+        {
+            DataSet ds = new DataSet();
+            SqlDataAdapter da;
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "websiteproductdetails_SelectById";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", productid);
+                cmd.Connection = ConnectionString;
+                ConnectionString.Open();
+                da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+                ErrHandler.writeError(ex.Message, ex.StackTrace);
+                return null;
+            }
+            finally
+            {
+                ConnectionString.Close();
+            }
+            return ds;
+        }
         public DataTable SelectAll(Int64 subcategoryId)
         {
             DataSet ds = new DataSet();

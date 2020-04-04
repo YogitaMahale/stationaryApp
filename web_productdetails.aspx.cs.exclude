@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using BusinessLayer;
+using System.Data;
+public partial class productdetails : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        //if (Request.QueryString["pid"] == null)
+        //{
+
+        //}
+        //else
+        //{
+            string pid = "1";
+           // string pid = Request.QueryString["pid"];
+            Bindproductslider(Convert.ToInt64(pid));
+       // }
+    }
+    private void Bindproductslider(Int64 pid)
+    {
+        DataSet dtCompany = (new cls_product_b().websiteproductdetails_SelectById(pid));
+        if (dtCompany.Tables[0] != null)
+        {
+            if (dtCompany.Tables[0].Rows.Count > 0)
+            {
+                lblproductName.InnerText = dtCompany.Tables[0].Rows[0]["productname"].ToString();
+               lblprice.InnerText = dtCompany.Tables[0].Rows[0]["mrp"].ToString();
+                lblshortdesc.InnerText = dtCompany.Tables[0].Rows[0]["shortdescp"].ToString();
+                //lblqty.Text = "0";
+               // lblTotalAmt.InnerText = "";
+                lbllongdesc.InnerText = dtCompany.Tables[0].Rows[0]["longdescp"].ToString();
+            }
+            else
+            {
+                
+            }
+        }
+
+
+
+        if (dtCompany.Tables[1] != null)
+        {
+            if (dtCompany.Tables[1].Rows.Count > 0)
+            {
+                repproductslider.DataSource = dtCompany.Tables[1];
+                repproductslider.DataBind();
+            }
+            else
+            {
+                repproductslider.DataSource = null;
+                repproductslider.DataBind();
+            }
+        }
+        else
+        {
+            repproductslider.DataSource = null;
+            repproductslider.DataBind();
+        }
+    }
+}

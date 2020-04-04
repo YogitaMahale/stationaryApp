@@ -1,0 +1,112 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/websitemaster.master" AutoEventWireup="true" CodeFile="searchbymaincategory.aspx.cs" Inherits="searchbymaincategory" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+
+    <!-- New Arrival -->
+    <section class="padding-top-100 padding-bottom-100">
+        <div class="container">
+
+            <!-- Main Heading -->
+            <div class="heading text-center">
+                <h4>new arrival</h4>
+                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. 
+          Sed feugiat, tellus vel tristique posuere, diam</span>
+            </div>
+        </div>
+
+        <!-- New Arrival -->
+        <div class="arrival-block" id="divRepeaterNewArrival">
+            <asp:Repeater ID="repproduct" runat="server">
+                <ItemTemplate>
+
+                    <!-- Item -->
+                    <div class="item" id="divNewArrival">
+                        <!-- Images -->
+                        <a href="web_productdetails.aspx?pid=<%#Eval("id") %>">
+                            <img class="img-1" src="uploads/product/websiteproduct/<%#Eval("mainimage") %>" alt="">
+                        </a>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img-2" src="uploads/product/websiteproduct/<%#Eval("mainimage") %>" alt="">
+                        <!-- Overlay  -->
+                        <div class="overlay">
+                            <!-- Price -->
+                            <span class="price"><small></small><span class="mrp"><%#Eval("mrp") %></span></span>
+                            <%-- <div class="position-center-center"><a   href="uploads/product/websiteproduct/<%#Eval("mainimage") %>" data-lighter><i class="icon-magnifier"></i></a></div>--%>
+                            <div class="position-center-center"><a href="uploads/product/websiteproduct/<%#Eval("mainimage") %>" data-lighter><i class="icon-magnifier"></i></a></div>
+                        </div>
+                        <!-- Item Name -->
+                        <div class="item-name">
+                            <a href="web_productdetails.aspx?pid=<%#Eval("id") %>"><span class="productname">
+                                <%#Eval("productname") %></span>
+                            </a>
+                            <p><span class="shortdescp"><%#Eval("shortdescp") %></span></p>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+
+
+        </div>
+        <div style="text-align: center;">
+
+            <table>
+                <tr>
+
+                    <td>
+                        <asp:Button ID="btnfirst" runat="server" Font-Bold="true" Text="<<" Height="31px"
+                            Width="43px" OnClick="btnfirst_Click" /></td>
+                    <td>
+                        <asp:Button ID="btnprevious" runat="server" Font-Bold="true" Text="<" Height="31px"
+                            Width="43px" OnClick="btnprevious_Click" /></td>
+                    <td>
+                        <asp:Button ID="btnnext" runat="server" Font-Bold="true" Text=">" Height="31px"
+                            Width="43px" OnClick="btnnext_Click" /></td>
+                    <td>
+                        <asp:Button ID="btnlast" runat="server" Font-Bold="true" Text=">>" Height="31px"
+                            Width="43px" OnClick="btnlast_Click" /></td>
+                </tr>
+            </table>
+        </div>
+       
+
+    </section>
+
+
+   
+
+
+    <%-- price /////////////////////--%>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script>  
+        var jQuery172 = jQuery.noConflict();
+        window.jQuery = jQuery172;
+    </script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
+    <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/excite-bike/jquery-ui.css"
+        rel="stylesheet" type="text/css" />
+
+
+    <%-- price /////////////////////--%>
+
+
+    <script src="ecommerce/js/jquery-1.11.3.min.js"></script>
+
+
+
+    <script src="ecommerce/js/bootstrap.min.js"></script>
+    <script src="ecommerce/js/own-menu.js"></script>
+    <script src="ecommerce/js/jquery.lighter.js"></script>
+    <script src="ecommerce/js/owl.carousel.min.js"></script>
+
+    <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+    <script type="text/javascript" src="ecommerce/rs-plugin/js/jquery.tp.t.min.js"></script>
+    <script type="text/javascript" src="ecommerce/rs-plugin/js/jquery.tp.min.js"></script>
+    <script src="ecommerce/js/main.js"></script>
+    <script src="ecommerce/js/main.js"></script>
+    <%--//----price slider
+      
+        --------------------%>
+</asp:Content>
+

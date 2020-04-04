@@ -20,12 +20,12 @@ public partial class morya : System.Web.UI.MasterPage
             }
             else
             {
-                Response.Redirect(Page.ResolveUrl("~/Default.aspx"));
+                Response.Redirect(Page.ResolveUrl("~/superadminlogin.aspx"));
             }
         }
         else
         {
-            Response.Redirect(Page.ResolveUrl("~/Default.aspx"));
+            Response.Redirect(Page.ResolveUrl("~/superadminlogin.aspx"));
         }
         String userName = String.Empty;
 

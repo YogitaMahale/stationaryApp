@@ -159,7 +159,7 @@ public partial class registerbranch : System.Web.UI.Page
             {
                 Clear();
 
-                Response.Redirect(Page.ResolveUrl("~/Default.aspx?reg=" + ocommon.Encrypt(Result.ToString(), true)));
+                Response.Redirect(Page.ResolveUrl("~/Login.aspx?reg=" + ocommon.Encrypt(Result.ToString(), true)));
             }
             else if(Result < -1){
                 Clear();
@@ -178,7 +178,7 @@ public partial class registerbranch : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect(Page.ResolveUrl("~/Default.aspx"));
+        Response.Redirect(Page.ResolveUrl("~/Login.aspx"));
     }
 
     protected void ddlState_SelectedIndexChanged(object sender, EventArgs e)

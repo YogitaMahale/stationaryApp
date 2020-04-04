@@ -49,7 +49,7 @@
                                         <th style="text-align: center">Branch</th>
                                         <th style="text-align: center">Order Date</th>
                                         <th style="text-align: center">Amount</th>
-
+                                          <th style="text-align: center">Status</th>
                                         <th style="text-align: center">Action</th>
 
                                     </tr>
@@ -76,7 +76,9 @@
                                                 <td style="text-align: center">
                                                     <asp:Label ID="lblAmount" runat="server" Text='<%# Eval("totalamount") %>'></asp:Label>
                                                 </td>
-
+                                                 <td style="text-align: center">
+                                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("isapprovedstatus") %>'></asp:Label>
+                                                </td>
                                                 <td style="text-align: center">
 
                                                     <asp:HyperLink ID="hlEdit" runat="server" CssClass="btn btn-sm btn-success" Text="Edit"></asp:HyperLink>&nbsp;

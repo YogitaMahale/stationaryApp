@@ -1,154 +1,107 @@
-﻿using BusinessLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Net.Mail;
-using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
-
+using BusinessLayer;
+using System.Web.Services;
 public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Request.QueryString["logout"] == "yes")
+        if (!this.IsPostBack)
         {
-            AllSessionNull();
+        //    //--------Arrival-----------
+        //    DataTable dtNewArrival = new DataTable();
+        //    dtNewArrival.Columns.AddRange(new DataColumn[] {
+        //new DataColumn("id"), new DataColumn("shortdescp"),new DataColumn("productname"),new DataColumn("mrp"),new DataColumn("mainimage") });
+
+        //    dtNewArrival.Rows.Add();
+        //    repnewArrival.DataSource = dtNewArrival;
+        //    repnewArrival.DataBind();
+
+            //    //-----------slider-----------------
+              BindSlider();
+            //DataTable dtslider = new DataTable();
+            //dtslider.Columns.AddRange(new DataColumn[] {
+            //new DataColumn("imagename") });
+
+            //dtslider.Rows.Add();
+            //Repeater_Slider.DataSource = dtslider;
+            //Repeater_Slider.DataBind();
+
         }
-        if (Request.QueryString["reg"] != null)
+        //if(!IsPostBack)
+        //{
+        //    BindSlider();
+        //    Bindnewarrivalproduct();
+
+        //}
+    }
+
+    //[WebMethod]
+    //public static string GetNewArrivalProduct()
+    //{
+    //    DataSet  dtCompany = (new cls_product_b().newArrivalSelectAll());
+         
+    //    return dtCompany.GetXml();
+    //}
+
+    //[WebMethod]
+    //public static string BindSlider()
+    //{
+
+
+    //    DataTable dtCompany = (new cls_websiteslider_b().SelectAll());
+    //    DataSet ds = new DataSet();
+    //    ds.Merge(dtCompany);
+    //    return ds.GetXml();
+    //}
+
+    private void BindSlider()
+    {
+        DataTable dtCompany = (new cls_websiteslider_b().SelectAll());
+        if (dtCompany != null)
         {
-            ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "", "alert('Registeration Complete. Please wait for admin approval.')", true);
-
-        }
-    }
-
-    public void Clear()
-    {
-        txtUserName.Text = string.Empty;
-        txtPassword.Text = string.Empty;
-        ddlbranchbank.SelectedIndex = 0;
-    }
-
-    private void AllSessionNull()
-    {
-        Session["userid"] = null;
-        Session["type"] = null;
-        Session["bid"] = null;
-        Session["username"] = null;
-
-    }
-
-
-    protected void btnLogin_Click(object sender, EventArgs e)
-    {
-
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnstring"].ConnectionString);
-        try
-        {
-            con.Close();
-            string query = string.Empty;
-            if (txtUserName.Text != string.Empty && txtPassword.Text != string.Empty)
+            if (dtCompany.Rows.Count > 0)
             {
-
-                if (ddlbranchbank.SelectedValue == "bank")
-                {
-                    query = "select * from zonemaster where  lower(loginname)=lower('" + txtUserName.Text.Trim() + "') and password='" + txtPassword.Text.Trim() + "' and isdeleted=0";
-                    SqlCommand cmd = new SqlCommand(query);
-                    SqlDataAdapter sda = new SqlDataAdapter();
-                    DataTable dtUser = new DataTable();
-                    con.Open();
-                    cmd.Connection = con;
-                    sda.SelectCommand = cmd;
-                    sda.Fill(dtUser);
-                    if (dtUser != null)
-                    {
-                        if (dtUser.Rows.Count > 0)
-                        {
-
-                            bool Status = Convert.ToBoolean(dtUser.Rows[0]["isactive"]);
-                            if (Status)
-                            {
-                                Session.Timeout = 120;
-
-                                Session["userid"] = dtUser.Rows[0]["id"].ToString();
-                                Session["username"] = dtUser.Rows[0]["name"].ToString();
-                                Session["type"] = ddlbranchbank.SelectedValue;
-                                Session["bid"] = dtUser.Rows[0]["bankid"].ToString();
-
-                                Session["bankid"]=  dtUser.Rows[0]["bankid"].ToString();
-                                con.Close();
-                                Response.Redirect(Page.ResolveUrl("~/bankdashboard.aspx"));
-                            }
-                            else
-                            {
-                                ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "", "alert('Your Account Under Admin Observation. Please wait for admin confirmation')", true);
-                            }
-
-
-                        }
-                    }
-
-                }
-                else
-                {
-                    query = "select *,(select bankid from zonemaster where id=zoneid) as bankid from branchmaster where  lower(loginname)=lower('" + txtUserName.Text.Trim() + "') and password='" + txtPassword.Text.Trim() + "' and isdeleted=0";
-                    SqlCommand cmd = new SqlCommand(query);
-                    SqlDataAdapter sda = new SqlDataAdapter();
-                    DataTable dtUser = new DataTable();
-                    con.Open();
-                    cmd.Connection = con;
-                    sda.SelectCommand = cmd;
-                    sda.Fill(dtUser);
-                    if (dtUser != null)
-                    {
-                        if (dtUser.Rows.Count > 0)
-                        {
-                            bool Status = Convert.ToBoolean(dtUser.Rows[0]["isactive"]);
-                            if (Status)
-                            {
-                                Session.Timeout = 120;
-
-                                Session["userid"] = Convert.ToString(dtUser.Rows[0]["branchid"]);
-                                Session["username"] = dtUser.Rows[0]["name"].ToString();
-                                Session["type"] = ddlbranchbank.SelectedValue;
-                                Session["bid"] = dtUser.Rows[0]["zoneid"].ToString();
-                                Session["bankid"] = dtUser.Rows[0]["bankid"].ToString();
-                                con.Close();
-                                Response.Redirect(Page.ResolveUrl("~/branchdashboard.aspx"));
-                            }
-                            else
-                            {
-                                bMsg.InnerText = "Your account under admin observation";
-                            }
-
-                        }
-                        else
-                        {
-                            bMsg.InnerText = "Please enter correct user name & password !!!";
-                            Clear();
-                        }
-                    }
-                    else
-                    {
-                        bMsg.InnerText = "Please enter correct user name & password !!!";
-                        Clear();
-                    }
-                }
-
+                Repeater_Slider.DataSource = dtCompany;
+                Repeater_Slider.DataBind();
             }
             else
             {
-                bMsg.InnerText = "Please enter user name & password !!!";
+                Repeater_Slider.DataSource = null;
+                Repeater_Slider.DataBind();
             }
         }
-        catch (Exception p)
-        { }
-        finally { con.Close(); }
+        else
+        {
+            Repeater_Slider.DataSource = null;
+            Repeater_Slider.DataBind();
+        }
     }
-
+    private void Bindnewarrivalproduct()
+    {
+        DataSet  dtCompany = (new cls_product_b().newArrivalSelectAll());
+        if (dtCompany.Tables [0] != null)
+        {
+            if (dtCompany.Tables[0].Rows.Count > 0)
+            {
+                repnewArrival.DataSource = dtCompany.Tables[0];
+                repnewArrival.DataBind();
+            }
+            else
+            {
+                repnewArrival.DataSource = null;
+                repnewArrival.DataBind();
+            }
+        }
+        else
+        {
+            repnewArrival.DataSource = null;
+            repnewArrival.DataBind();
+        }
+    }
 }

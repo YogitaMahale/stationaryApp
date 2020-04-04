@@ -17,6 +17,36 @@ namespace BusinessLayer
     }
         #region Public Methods
 
+        public DataSet newArrivalSelectAll()
+        {
+            DataSet dt = new DataSet();
+            try
+            {
+                cls_product_db objcls_product_db = new cls_product_db();
+                dt = objcls_product_db.newArrivalSelectAll();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                ErrHandler.writeError(ex.Message, ex.StackTrace);
+                return dt;
+            }
+        }
+        public DataSet websiteproductdetails_SelectById(Int64 productid)
+        {
+            DataSet dt = new DataSet();
+            try
+            {
+                cls_product_db objcls_product_db = new cls_product_db();
+                dt = objcls_product_db.websiteproductdetails_SelectById(productid);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                ErrHandler.writeError(ex.Message, ex.StackTrace);
+                return dt;
+            }
+        }
         public DataTable SelectAll(Int64 subcategoryId)
         {
             DataTable dt = new DataTable();

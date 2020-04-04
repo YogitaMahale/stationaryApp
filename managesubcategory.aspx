@@ -31,7 +31,7 @@
 
                         </div>
                         <div class="box-body">
-                            <label for="exampleInputEmail1">Select Maincategory </label>
+                            <label for="exampleInputEmail1">Select Main Category </label>
                             <asp:DropDownList ID="ddlmaincategory" Class="form-control" Width="500px" AutoPostBack="true" OnSelectedIndexChanged="ddlmaincategory_SelectedIndexChanged" runat="server"></asp:DropDownList>
 
                             <asp:RequiredFieldValidator ID="RFVddlCategory" runat="server" InitialValue="0" Display="Dynamic" ControlToValidate="ddlmaincategory" CssClass="error" ErrorMessage="Required Field" ValidationGroup="p1"></asp:RequiredFieldValidator>
@@ -44,6 +44,7 @@
                                 <thead>
                                     <tr>
                                         <th style="text-align: center;">SR No.</th>
+                                         <th style="text-align: center">Maincategory</th>
                                         <th style="text-align: center">Name</th>
                                         <th style="text-align: center">Image</th>
                                         <th style="text-align: center">Is Show</th>
@@ -59,6 +60,9 @@
                                             <tr>
                                                 <td style="text-align: center;">
                                                     <asp:Label ID="Label1" runat="server" Text='<%# Eval("sr") %>'></asp:Label>
+                                                </td>
+                                                <td style="text-align: center;">
+                                                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("maincategoryname") %>'></asp:Label>
                                                 </td>
                                                 <td style="text-align: center">
                                                     <asp:Label ID="lblCategoryId" runat="server" Visible="false" Text='<%# Eval("id") %>'></asp:Label>

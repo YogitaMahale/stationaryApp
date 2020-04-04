@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -16,7 +18,7 @@ public partial class productimages : System.Web.UI.Page
     int productImageFrontHeight = 900;
     string productMainPath = "~/uploads/product/";
     string productFrontPath = "~/uploads/product/front/";
-    string productWaterFrontPath = "~/uploads/product/water/";
+   // string productWaterFrontPath = "~/uploads/product/water/";
 
 
     Int64 pid = 0;
@@ -81,7 +83,7 @@ public partial class productimages : System.Web.UI.Page
         {
             //HyperLink hlEdit = (HyperLink)e.Item.FindControl("hlEdit");
             //hlEdit.NavigateUrl = Page.ResolveUrl("~/addeditbrand.aspx?id=" + ocommon.Encrypt(DataBinder.Eval(e.Item.DataItem, "id").ToString(), true));
-            Image imgCategory = (Image)e.Item.FindControl("imgCategory");
+            System.Web.UI.WebControls.Image imgCategory = (System.Web.UI.WebControls.Image)e.Item.FindControl("imgCategory");
             imgCategory.ImageUrl = productFrontPath + DataBinder.Eval(e.Item.DataItem, "imagename").ToString();
 
         }
@@ -127,7 +129,40 @@ public partial class productimages : System.Web.UI.Page
             {
                 string fileName = Path.GetFileNameWithoutExtension(fpProduct.FileName.Replace(' ', '_')) + DateTime.Now.Ticks.ToString() + Path.GetExtension(fpProduct.FileName);
                 fpProduct.SaveAs(MapPath(productMainPath + fileName));
-                ocommon.CreateThumbnail1("uploads\\product\\", productImageFrontWidth, productImageFrontHeight, "~/uploads/product/front/", fileName);
+               //  ocommon.CreateThumbnail1("uploads\\product\\", productImageFrontWidth, productImageFrontHeight, "~/uploads/product/front/", fileName);
+
+                //------front website product-----------------------
+                int width = 700;
+                int height = 710;
+                Stream inp_Stream = fpProduct.PostedFile.InputStream;
+                using (var image = System.Drawing.Image.FromStream(inp_Stream))
+                {
+                    Bitmap myImg = new Bitmap(width, height);
+                    Graphics myImgGraph = Graphics.FromImage(myImg);
+                    myImgGraph.CompositingQuality = CompositingQuality.HighQuality;
+                    myImgGraph.SmoothingMode = SmoothingMode.HighQuality;
+                    myImgGraph.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    var imgRectangle = new Rectangle(0, 0, width, height);
+                    myImgGraph.DrawImage(image, imgRectangle);
+                    string ext = string.Empty;
+                    ext = System.IO.Path.GetExtension(fpProduct.FileName.ToString()).ToLower();
+
+                    // Save the file   
+                    var path = Path.Combine(Server.MapPath("~/uploads/product/front/"), fileName);
+                    myImg.Save(path, image.RawFormat);
+
+                }
+
+
+
+
+
+
+
+
+
+
+
                 //WatermarkImageCreate(fileName);
                 imgProduct.Visible = true;
                 //imgProduct.ImageUrl = productWaterFrontPath + fileName;

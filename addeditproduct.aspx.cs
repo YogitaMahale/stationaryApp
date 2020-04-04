@@ -9,6 +9,8 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using BusinessLayer;
 using System.Data;
+using System.Drawing.Drawing2D;
+
 public partial class addeditproduct : System.Web.UI.Page
 {
     int categoryImageFrontWidth = 500;
@@ -251,7 +253,33 @@ public partial class addeditproduct : System.Web.UI.Page
         {
             string fileName = Path.GetFileNameWithoutExtension(fpCategory.FileName.Replace(' ', '_')) + DateTime.Now.Ticks.ToString() + Path.GetExtension(fpCategory.FileName);
             fpCategory.SaveAs(MapPath(categoryMainPath + fileName));
-            ocommon.CreateThumbnail1("uploads\\product\\", categoryImageFrontWidth, categoryImageFrontHeight, "~/Uploads/product/front/", fileName);
+           ocommon.CreateThumbnail1("uploads\\product\\", categoryImageFrontWidth, categoryImageFrontHeight, "~/Uploads/product/front/", fileName);
+
+            //------front website product-----------------------
+            int width = 478;
+            int height = 512;
+            Stream inp_Stream = fpCategory.PostedFile.InputStream;
+            using (var image = System.Drawing.Image.FromStream(inp_Stream))
+            {
+                Bitmap myImg = new Bitmap(width, height);
+                Graphics myImgGraph = Graphics.FromImage(myImg);
+                myImgGraph.CompositingQuality = CompositingQuality.HighQuality;
+                myImgGraph.SmoothingMode = SmoothingMode.HighQuality;
+                myImgGraph.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                var imgRectangle = new Rectangle(0, 0, width, height);
+                myImgGraph.DrawImage(image, imgRectangle);
+                string ext = string.Empty;
+                ext = System.IO.Path.GetExtension(fpCategory.FileName.ToString()).ToLower();
+
+                // Save the file   
+                var path = Path.Combine(Server.MapPath("~/uploads/product/websiteproduct/"), fileName);
+                myImg.Save(path, image.RawFormat);
+
+            }
+
+            
+
+            //-*-----------------------------
             imgCategory.Visible = true;
             imgCategory.ImageUrl = categoryFrontPath + fileName;
             ViewState["fileName"] = fileName;

@@ -1,0 +1,402 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/websitemaster.master" AutoEventWireup="true" CodeFile="web_productdetails.aspx.cs" Inherits="productdetails" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <style>
+        .btninc:hover {
+            color: green;
+        }
+
+        .btndec:hover {
+            color: red;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+
+    <!-- Popular Products -->
+    <section class="padding-top-100 padding-bottom-100">
+        <div class="container">
+
+            <!-- SHOP DETAIL -->
+            <div class="shop-detail">
+                <div class="row">
+
+                    <!-- Popular Images Slider -->
+                    <div class="col-md-7">
+
+                        <!-- Images Slider -->
+                        <div class="images-slider">
+                            <ul class="slides">
+                                <asp:Repeater ID="repproductslider" runat="server">
+                                    <ItemTemplate>
+                                        <li data-thumb="uploads/product/front/<%#Eval("imagename") %>">
+                                            <img class="img-responsive" src="uploads/product/front/<%#Eval("imagename") %>" alt="">
+                                        </li>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+
+                                <%--  <li data-thumb="ecommerce/images/large-img-2.jpg">
+                                    <img class="img-responsive" src="ecommerce/images/large-img-2.jpg" alt="">
+                                </li>
+                                <li data-thumb="ecommerce/images/large-img-3.jpg">
+                                    <img class="img-responsive" src="ecommerce/images/large-img-3.jpg" alt="">
+                                </li>--%>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- COntent -->
+                    <div class="col-md-5">
+                        <h4 id="lblproductName" runat="server">wood chair</h4>
+                        <span id="lblprice" runat="server" class="price"><small></small>299</span>
+
+                        <!-- Sale Tags -->
+                        <%--<div class="on-sale">10% <span>OFF</span> </div>
+                        <ul class="item-owner">
+                            <li>Designer :<span> ABC Art</span></li>
+                            <li>Brand:<span> LimeWood</span></li>
+                        </ul>--%>
+
+                        <!-- Item Detail -->
+                        <p id="lblshortdesc" runat="server">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam laoreet tortor ac maximus alique met, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam</p>
+
+                        <!-- Short By -->
+                        <div class="some-info">
+                            <ul class="row margin-top-30">
+                                <li class="col-xs-12">
+                                    <div class="quinty">
+                                        <!-- QTY -->
+
+                                        <label>
+                                            <table>
+                                                <tr>
+                                                    <td><i class="fa fa-plus-square fa-3x btninc"></i></td>
+
+                                                    <td>
+                                                        <input id="txtqty" name="abc" style="text-align: center; width: 80px; height: 34px; margin: 0px 5px" class="txtqty" value="0" runat="server" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" />
+                                                    </td>
+                                                    <td><i class="fa fa-minus-square  fa-3x btndec"></i></td>
+                                                </tr>
+                                            </table>
+
+
+
+
+
+
+                                        </label>
+
+
+
+
+
+
+                                        <%--  <select class="selectpicker">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>--%>
+                                    </div>
+                                </li>
+
+                                <!-- COLORS -->
+                                <%--  <li class="col-xs-8">
+                                    <ul class="colors-shop">
+                                        <li><span class="margin-right-20">Colors</span></li>
+                                        <li><a href="#." style="background: #958170;"></a></li>
+                                        <li><a href="#." style="background: #c9a688;"></a></li>
+                                        <li><a href="#." style="background: #c9c288;"></a></li>
+                                        <li><a href="#." style="background: #a7c988;"></a></li>
+                                        <li><a href="#." style="background: #9ed66b;"></a></li>
+                                        <li><a href="#." style="background: #6bd6b1;"></a></li>
+                                        <li><a href="#." style="background: #82c2dc;"></a></li>
+                                        <li><a href="#." style="background: #8295dc;"></a></li>
+                                    </ul>
+                                </li>--%>
+
+                                <!-- ADD TO CART -->
+                                <li class="col-xs-6">
+                                    <%-- <a href="#." class="btn">ADD TO CART</a> --%>
+                                    <asp:Button ID="Button1" class="btn" runat="server" Text="ADD TO CART" OnClick="Button1_Click" />
+                                </li>
+
+                                <!-- LIKE -->
+                                <li class="col-xs-6"><a href="#." class="like-us"><i class="icon-heart"></i></a></li>
+                            </ul>
+
+                            <!-- INFOMATION -->
+                            <div class="inner-info">
+                                <h6>DELIVERY INFORMATION</h6>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam laoreet tortor ac maximus alique met, consectetur adipiscing elit. </p>
+                                <h6>SHIPPING & RETURNS</h6>
+                                <h6>SHARE THIS PRODUCT</h6>
+
+                                <!-- Social Icons -->
+                                <ul class="social_icons">
+                                    <li><a href="#."><i class="icon-social-facebook"></i></a></li>
+                                    <li><a href="#."><i class="icon-social-twitter"></i></a></li>
+                                    <li><a href="#."><i class="icon-social-tumblr"></i></a></li>
+                                    <li><a href="#."><i class="icon-social-youtube"></i></a></li>
+                                    <li><a href="#."><i class="icon-social-dribbble"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--======= PRODUCT DESCRIPTION =========-->
+            <div class="item-decribe">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs animate fadeInUp" data-wow-delay="0.4s" role="tablist">
+                    <li role="presentation" class="active"><a href="#descr" role="tab" data-toggle="tab">DESCRIPTION</a></li>
+                    <%--<li role="presentation"><a href="#review" role="tab" data-toggle="tab">REVIEW (03)</a></li>
+                    <li role="presentation"><a href="#tags" role="tab" data-toggle="tab">INFORMATION</a></li>--%>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content animate fadeInUp" data-wow-delay="0.4s">
+                    <!-- DESCRIPTION -->
+                    <div role="tabpanel" class="tab-pane fade in active" id="descr">
+                        <p id="lbllongdesc" runat="server">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed lectus id nisi interdum mollis. Nam congue tellus quis elit mattis congue. Aenean eu massa sed mauris hendrerit ornare sed eget ante. 
+                Vestibulum id eros quam. Nunc volutpat at magna gravida eleifend. Phasellus sit amet nisi tempus, tincidunt elit ac, tempor metus.
+                            <br>
+                        </p>
+                        <%--  <h6>THE SIMPLE FACTS</h6>
+                        <ul>
+                            <li>
+                                <p>Praesent faucibus, leo vitae maximus dictum,</p>
+                            </li>
+                            <li>
+                                <p>Donec porta ut lectus </p>
+                            </li>
+                            <li>
+                                <p>Phasellus maximus velit id nisl</p>
+                            </li>
+                            <li>
+                                <p>Quisque a tellus et sapien aliquam sus</p>
+                            </li>
+                            <li>
+                                <p>Donec porta ut lectus </p>
+                            </li>
+                            <li>
+                                <p>Phasellus maximus velit id nisl</p>
+                            </li>
+                        </ul>--%>
+                    </div>
+
+                    <!-- REVIEW -->
+                    <%--<div role="tabpanel" class="tab-pane fade" id="review">
+                        <h6>3 REVIEWS FOR SHIP YOUR IDEA</h6>
+
+                        <!-- REVIEW PEOPLE 1 -->
+                        <div class="media">
+                            <div class="media-left">
+                                <!--  Image -->
+                                <div class="avatar">
+                                    <a href="#">
+                                        <img class="media-object" src="ecommerce/images/avatar-1.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <!--  Details -->
+                            <div class="media-body">
+                                <p class="font-playfair">
+                                    “Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua.”
+                                </p>
+                                <h6>TYRION LANNISTER <span class="pull-right">MAY 10, 2016</span> </h6>
+                            </div>
+                        </div>
+
+                        <!-- REVIEW PEOPLE 1 -->
+
+                        <div class="media">
+                            <div class="media-left">
+                                <!--  Image -->
+                                <div class="avatar">
+                                    <a href="#">
+                                        <img class="media-object" src="ecommerce/images/avatar-2.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <!--  Details -->
+                            <div class="media-body">
+                                <p class="font-playfair">
+                                    “Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua.”
+                                </p>
+                                <h6>TYRION LANNISTER <span class="pull-right">MAY 10, 2016</span> </h6>
+                            </div>
+                        </div>
+
+                        <!-- ADD REVIEW -->
+                        <h6 class="margin-t-40">ADD REVIEW</h6>
+                        <form>
+                            <ul class="row">
+                                <li class="col-sm-6">
+                                    <label>
+                                        *NAME
+                      <input type="text" value="" placeholder="">
+                                    </label>
+                                </li>
+                                <li class="col-sm-6">
+                                    <label>
+                                        *EMAIL
+                      <input type="email" value="" placeholder="">
+                                    </label>
+                                </li>
+                                <li class="col-sm-12">
+                                    <label>
+                                        *YOUR REVIEW
+                      <textarea></textarea>
+                                    </label>
+                                </li>
+                                <li class="col-sm-6">
+                                    <!-- Rating Stars -->
+                                    <div class="stars"><span>YOUR RATING</span> <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                                </li>
+                                <li class="col-sm-6">
+                                    <button type="submit" class="btn btn-dark btn-small pull-right no-margin">POST REVIEW</button>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>--%>
+
+                    <!-- TAGS -->
+                    <%--<div role="tabpanel" class="tab-pane fade" id="tags"></div>--%>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Products -->
+    <section class="light-gray-bg padding-top-150 padding-bottom-150">
+        <div class="container">
+
+            <!-- Main Heading -->
+            <div class="heading text-center">
+                <h4>Related Category Product</h4>
+                <%--   <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. 
+          Sed feugiat, tellus vel tristique posuere, diam</span>--%>
+            </div>
+
+            <!-- Popular Item Slide -->
+            <div class="papular-block block-slide">
+                <asp:Repeater ID="repRelatedproduct" runat="server">
+                    <ItemTemplate>
+                        <!-- Item -->
+                        <div class="item">
+                            <!-- Item img -->
+                            <div class="item-img">
+                                <%-- <img class="img-1" src="ecommerce/images/product-1.jpg" alt="">
+                        <img class="img-2" src="ecommerce/images/product-2.jpg" alt="">--%>
+
+                                <a href="web_productdetails.aspx?pid=<%#Eval("id") %>">
+                                    <img class="img-1" src="uploads/product/websiteproduct/<%#Eval("mainimage") %>" alt="">
+                                    <img class="img-2" src="uploads/product/websiteproduct/<%#Eval("mainimage") %>" alt="">
+                                </a>
+                                <!-- Overlay -->
+                                <div class="overlay">
+                                    <div class="position-center-center">
+                                        <div class="inn"><a href="" src="uploads/product/websiteproduct/<%#Eval("mainimage") %>" data-lighter><i class="icon-magnifier"></i></a><a href="#."><i class="icon-basket"></i></a><a href="#."><i class="icon-heart"></i></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Item Name -->
+                            <div class="item-name">
+                                <a href="web_productdetails.aspx?pid=<%#Eval("id") %>"><%#Eval("productname") %></a>
+
+                                </a>
+                                <p><%#Eval("shortdescp") %></p>
+                            </div>
+                            <!-- Price -->
+                            <span class="price"><small>Rs.</small><%#Eval("mrp") %></span>
+                        </div>
+
+                    </ItemTemplate>
+                </asp:Repeater>
+
+
+            </div>
+        </div>
+    </section>
+
+    <script src="ecommerce/js/jquery-1.11.3.min.js"></script>
+    <%--<script type="text/javascript">
+        $(".btninc").on("click", function () {
+
+
+            var $button = $(this);
+            var oldValue = $button.parent().find(".quinty").val();
+
+            if ($button.text() == "+") {
+                var newVal = parseFloat(oldValue) + 1;
+            } else {
+                // Don't allow decrementing below zero
+                if (oldValue > 0) {
+                    var newVal = parseFloat(oldValue) - 1;
+                } else {
+                    newVal = 0;
+                }
+            }
+            $button.parent().find(".quinty").val(newVal);    
+        });
+
+
+
+        //$(".btninc").click(function () {
+        //    alert('sdf');
+        //    var btninc = $(this);
+        //    var textval = btninc.parent().find(".quinty");
+
+        //     var newVal = parseFloat(textval) + 1;
+        //    $button.parent().find("lblTotalAmt").val(newVal);
+        //    //var value = textval.val();
+        //    //alert("hello : " + value);
+        //    ////alert("hello : " + qty.val());
+
+        //    //btninc
+        //    //lblqty
+        //    //btndec
+        //    //lblTotalAmt
+
+        //});
+        //$(".btndec").click(function () {
+        //    var btninc = $(this);
+        //    var textval = btninc.parent().find(".quinty");
+        //    var value = textval.val();
+        //    alert("hello : " + value);
+        //    // alert("hello : " + qty.val());
+
+        //});
+
+    </script>--%>
+
+
+    <script type="text/javascript">
+        $(".btninc").click(function () {
+            //  alert('sdf');
+            var no = $(".txtqty").val();
+            no++;
+
+            $(".txtqty").val(no);
+        });
+
+        $(".btndec").click(function () {
+            //  alert('sdf');
+            var no = $(".txtqty").val();
+
+            if (no == -1 || no == 0) {                  // $(".txtqty").val(no);
+            }
+            else {
+                no--;
+            }
+            $(".txtqty").val(no);
+
+        });
+    </script>
+</asp:Content>
+
+

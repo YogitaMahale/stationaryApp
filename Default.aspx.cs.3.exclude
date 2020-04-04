@@ -1,0 +1,178 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using BusinessLayer;
+public partial class _Default : System.Web.UI.Page
+{
+    SqlDataAdapter dadapter;
+    DataSet dset;
+    
+    PagedDataSource adsource;
+    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnstring"].ConnectionString);
+    int pos;
+    protected int RepeatColumns;
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if(!IsPostBack)
+        {
+           // Bindnewarrivalproduct();
+          this.BindDummyItem();
+        }
+        if (!IsPostBack)
+        {
+            this.ViewState["vs"] = 0;
+        }
+        pos = (int)this.ViewState["vs"];
+        databind();
+    }
+    private void Bindnewarrivalproduct()
+    {
+        //DataSet dtCompany = (new cls_product_b().newArrivalSelectAll());
+
+        //if (dtCompany.Tables[0] != null)
+        //{
+        //    if (dtCompany.Tables[0].Rows.Count > 0)
+        //    {
+        //        repnewArrival.DataSource = dtCompany.Tables[0];
+        //        repnewArrival.DataBind();
+        //    }
+        //    else
+        //    {
+        //        repnewArrival.DataSource = null;
+        //        repnewArrival.DataBind();
+        //    }
+        //}
+        //else
+        //{
+        //    repnewArrival.DataSource = null;
+        //    repnewArrival.DataBind();
+        //}
+    }
+    private void BindDummyItem()
+    {
+        DataTable dummy = new DataTable();
+        dummy.Columns.Add("ProductId");
+        dummy.Columns.Add("Name");
+        dummy.Columns.Add("Price");
+        dummy.Columns.Add("img");
+        dummy.Columns.Add("shortdescp");
+        
+        int count = dlProducts.RepeatColumns == 0 ? 1 : dlProducts.RepeatColumns;
+        for (int i = 0; i < count; i++)
+        {
+            dummy.Rows.Add();
+        }
+        dlProducts.DataSource = dummy;
+        dlProducts.DataBind();
+        this.RepeatColumns = dlProducts.RepeatColumns == 0 ? 1 : dlProducts.RepeatColumns;
+    }
+
+    [WebMethod]
+    public static string GetProducts(int start, int end)
+    {
+        DataSet ds = new DataSet();
+        try
+        {
+            System.Threading.Thread.Sleep(100);
+            string strConnString = ConfigurationManager.ConnectionStrings["cnstring"].ConnectionString;
+          
+            using (SqlConnection con = new SqlConnection(strConnString))
+            {
+                 string query = "SELECT id as ProductId,SUBSTRING(productname, 1, 25)  as Name,mrp as Price,'uploads/product/websiteproduct/'+mainimage as img,SUBSTRING(shortdescp, 1, 50) as shortdescp FROM product WHERE isdeleted=0 and id<50 and (mrp BETWEEN @Start AND @End) OR (@Start = 0 AND @End = 0) ";
+              //  string query = "SELECT id as ProductId,SUBSTRING(productname, 1, 25)  as Name,mrp as Price,'uploads/product/websiteproduct/'+mainimage as img,SUBSTRING(shortdescp, 1, 50) as shortdescp FROM product WHERE isdeleted=0 and id=543  ";
+                // string query = "SELECT id as ProductId,productname as Name,mrp as Price,'uploads/product/websiteproduct/'+mainimage as img,SUBSTRING(shortdescp, 1, 50) as shortdescp FROM product WHERE isdeleted=0 and id<50 ";
+                using (SqlCommand cmd = new SqlCommand(query))
+                {
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@Start", start);
+                    cmd.Parameters.AddWithValue("@End", end);
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        sda.Fill(ds, "Products");
+                    }
+                }
+            }
+            DataTable dt = new DataTable();
+            dt.TableName = "Range";
+            using (SqlConnection con = new SqlConnection(strConnString))
+            {
+                string query = "SELECT MIN(mrp) [Min], MAX(mrp) [Max] FROM product where isdeleted=0  ";
+                using (SqlCommand cmd = new SqlCommand(query))
+                {
+                    cmd.Connection = con;
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        sda.Fill(dt);
+                    }
+                }
+            }
+            ds.Tables.Add(dt);
+            
+        }
+        catch { }
+        finally { }
+        return ds.GetXml();
+
+    }
+    public void databind()
+    {
+        dset = new DataSet();
+        dset = (new cls_product_b().newArrivalSelectAll());
+
+        //dadapter = new SqlDataAdapter("SELECT id as ProductId,productname as Name,mrp as Price,'uploads/product/websiteproduct/'+mainimage as img,SUBSTRING(shortdescp, 1, 50) as shortdescp FROM product WHERE isdeleted=0 ", con);
+        //dset = new DataSet();
+        adsource = new PagedDataSource();
+        //dadapter.Fill(dset);
+        adsource.DataSource = dset.Tables[0].DefaultView;
+        adsource.PageSize = 8;
+        adsource.AllowPaging = true;
+        adsource.CurrentPageIndex = pos;
+        btnfirst.Enabled = !adsource.IsFirstPage;
+        btnprevious.Enabled = !adsource.IsFirstPage;
+        btnlast.Enabled = !adsource.IsLastPage;
+        btnnext.Enabled = !adsource.IsLastPage;
+        repnewArrival.DataSource = adsource;
+        repnewArrival.DataBind();
+    }
+
+    protected void btnfirst_Click(object sender, EventArgs e)
+    {
+        pos = 0;
+        databind();
+    }
+
+    protected void btnprevious_Click(object sender, EventArgs e)
+    {
+        pos = (int)this.ViewState["vs"];
+        pos -= 1;
+        this.ViewState["vs"] = pos;
+        databind();
+    }
+
+    protected void btnnext_Click(object sender, EventArgs e)
+    {
+        pos = (int)this.ViewState["vs"];
+        pos += 1;
+        this.ViewState["vs"] = pos;
+        databind();
+    }
+
+    protected void btnlast_Click(object sender, EventArgs e)
+    {
+        pos = adsource.PageCount - 1;
+        databind();
+    }
+
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+
+    }
+}
